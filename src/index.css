@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* System font and accessibility styles */
+:root {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: light;
+  /* Visual Hierarchy: Sunset Orange & Soft Sand lead, Deep Forest as contrasting secondary */
+  --color-sunset: #E8874A;
+  --color-soft-sand: #E8D2B4;
+  --color-terracotta: #713F2B;
+  --color-forest: #244C3B;
+  --color-warm-white: #F5F6F3;
+  --color-sand-bg: #F7F1E8;
+  --color-sand-border: #DFCBB3;
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F7F1E8;
+  color: #2D221C;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom focus ring in Burnt Terracotta for strong accessibility contrast on warm backgrounds */
+:focus-visible {
+  outline: 3px solid #713F2B !important;
+  outline-offset: 2px !important;
+}
+
+/* Hide scrollbar for clean horizontal mobile swipe strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Touch manipulation optimization */
+button, select, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Interactive touch / click micro-interaction utility */
+.interactive-tap {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.interactive-tap:active {
+  transform: scale(0.98);
+}
+
+/* Ensure Leaflet controls and markers render smoothly */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: #E8D2B4 !important;
+}
+
+/* Ensure Leaflet image overlays and tiles are never squashed by Tailwind preflight */
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-overlay-pane img {
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+}
+
+.dust-risk-raster-overlay,
+.rainfall-raster-overlay {
+  pointer-events: none;
+  filter: contrast(1.05) saturate(1.15);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Leaflet markers with smooth hover and scaling */
+.custom-city-marker,
+.rainfall-grid-marker {
+  background: transparent !important;
+  border: none !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.custom-city-marker:hover {
+  z-index: 1500 !important;
+}
+
+/* Refined Leaflet popups and tooltips matching DustWatch design */
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5CD !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 16px -2px rgba(36, 76, 59, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5CD !important;
+}
+
+.leaflet-popup-content {
+  margin: 0.65rem 0.9rem !important;
+  font-family: inherit !important;
+  color: #1E2522 !important;
+  line-height: 1.4 !important;
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .interactive-tap:active {
+    transform: none !important;
+  }
+}
