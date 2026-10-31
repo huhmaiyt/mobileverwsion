@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* Design tokens. Overriding Tailwind's theme variables re-themes every existing utility class,
+   so components keep their markup. Status colours (risk levels) live in config.ts, not here. */
+@theme {
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Square, instrument-panel corners instead of soft pill shapes */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 6px;
+
+  /* Flat surfaces: separation comes from borders, not shadows */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: 0 1px 2px rgb(22 34 43 / 0.16);
+  --shadow-lg: 0 2px 6px rgb(22 34 43 / 0.18);
+  --shadow-xl: 0 6px 20px rgb(22 34 43 / 0.22);
+
+  /* Accent: deep atmospheric teal-blue (replaces the default saturated blue) */
+  --color-blue-50: #eef5f8;
+  --color-blue-100: #d9e8ef;
+  --color-blue-200: #b6d2de;
+  --color-blue-300: #86b2c5;
+  --color-blue-400: #548da6;
+  --color-blue-500: #327089;
+  --color-blue-600: #245f77;
+  --color-blue-700: #1d4e63;
+  --color-blue-800: #183f51;
+  --color-blue-900: #14333f;
+  --color-blue-950: #0b1e26;
+
+  /* Neutrals: cool slate instead of default grey */
+  --color-gray-50: #f6f8f8;
+  --color-gray-100: #edf0f1;
+  --color-gray-200: #dde2e5;
+  --color-gray-300: #c6ced2;
+  --color-gray-400: #97a3aa;
+  --color-gray-500: #5b6770;
+  --color-gray-600: #4b5964;
+  --color-gray-700: #3a454e;
+  --color-gray-800: #29323a;
+  --color-gray-900: #16222b;
+}
+
+:root {
+  --dw-ink: #16222b;
+  --dw-muted: #4b5964;
+  --dw-line: #cbd3d7;
+  --dw-paper: #f3f5f5;
+  --dw-accent: #1d4e63;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dw-paper);
+  color: var(--dw-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Visible keyboard focus in the accent colour */
+:focus-visible {
+  outline: 2px solid var(--dw-accent) !important;
+  outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure Leaflet controls and markers render smoothly */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Ensure Leaflet image overlays and tiles are never squashed by Tailwind preflight */
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-overlay-pane img {
+  max-width: none !important;
+  max-height: none !important;
+  display: block !important;
+}
+
+.dust-risk-raster-overlay,
+.rainfall-raster-overlay {
+  pointer-events: none;
+  filter: contrast(1.05) saturate(1.15);
+}
+
+/* Custom Leaflet pulse or styling */
+.custom-city-marker,
+.rainfall-grid-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
