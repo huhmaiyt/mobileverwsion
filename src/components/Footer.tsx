@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
 import { APP_CONFIG } from '../config.ts';
 import { STRINGS } from '../strings.ts';
 
@@ -88,16 +87,6 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           >
             {STRINGS.nav.accuracy}
           </button>
-
-          <a
-            href={STRINGS.disclaimer.ncmUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 hover:underline text-[#D5A45F] font-bold"
-          >
-            <span>{STRINGS.disclaimer.ncmLinkLabel}</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
 
           {/* Test view link (hidden if config.showTestViewLink is false) */}
           {APP_CONFIG.showTestViewLink && (
