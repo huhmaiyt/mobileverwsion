@@ -173,7 +173,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 role="radio"
                 aria-checked={viewMode === 'now'}
                 onClick={() => handleSelectViewMode('now')}
-                className={`relative px-4 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer min-h-[40px] z-10 interactive-tap ${
+                className={`relative px-4 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer min-h-[44px] min-w-[44px] z-10 interactive-tap ${
                   viewMode === 'now'
                     ? 'text-[#713F2B] font-bold'
                     : 'text-[#5A453A] hover:text-[#713F2B]'
@@ -193,7 +193,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 role="radio"
                 aria-checked={viewMode === 'highest12h'}
                 onClick={() => handleSelectViewMode('highest12h')}
-                className={`relative px-4 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer min-h-[40px] z-10 interactive-tap ${
+                className={`relative px-4 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer min-h-[44px] min-w-[44px] z-10 interactive-tap ${
                   viewMode === 'highest12h'
                     ? 'text-[#713F2B] font-bold'
                     : 'text-[#5A453A] hover:text-[#713F2B]'
@@ -308,13 +308,11 @@ export const MapScreen: React.FC<MapScreenProps> = ({
           {/* Key Metric Tiles: 2 columns on mobile, 4 columns on large screens */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
             {/* Tile 1: Current Condition (Now) */}
-            <button
-              type="button"
-              onClick={() => handleSelectViewMode('now')}
-              className={`p-3.5 rounded-lg border text-left transition-all duration-200 cursor-pointer active:scale-[0.98] ${
+            <div
+              className={`p-3.5 rounded-lg border text-left ${
                 viewMode === 'now'
                   ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
-                  : 'bg-white border-[#DFCBB3] hover:bg-[#FFF8F0] hover:border-[#E8874A]/60'
+                  : 'bg-white border-[#DFCBB3]'
               }`}
             >
               <div className="flex items-center justify-between text-xs text-[#8C6D58] font-medium mb-1">
@@ -334,18 +332,16 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 </span>
               </div>
               <div className="text-[11px] text-[#8C6D58] mt-1">
-                Measured at current hour
+                Estimated for the current hour
               </div>
-            </button>
+            </div>
 
             {/* Tile 2: 12-Hour Forecast Peak */}
-            <button
-              type="button"
-              onClick={() => handleSelectViewMode('highest12h')}
-              className={`p-3.5 rounded-lg border text-left transition-all duration-200 cursor-pointer active:scale-[0.98] ${
+            <div
+              className={`p-3.5 rounded-lg border text-left ${
                 viewMode === 'highest12h'
                   ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
-                  : 'bg-white border-[#DFCBB3] hover:bg-[#FFF8F0] hover:border-[#E8874A]/60'
+                  : 'bg-white border-[#DFCBB3]'
               }`}
             >
               <div className="flex items-center justify-between text-xs text-[#8C6D58] font-medium mb-1">
@@ -367,7 +363,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
               <div className="text-[11px] text-[#8C6D58] mt-1">
                 Peak expected at {currentOutlook.peakHourTime}
               </div>
-            </button>
+            </div>
 
             {/* Tile 3: Best 3-Hour Window */}
             <div className="p-3.5 rounded-lg border border-[#DFCBB3] bg-white hover:border-[#244C3B]/50 transition-colors">

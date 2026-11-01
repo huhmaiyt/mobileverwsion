@@ -74,11 +74,8 @@ export const HowItWorksScreen: React.FC = () => {
         <OutlineDrawBody>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 items-stretch">
             {/* Step 1 */}
-            <div className="p-4 rounded-lg bg-blue-50/60 border border-blue-200 flex flex-col justify-between">
+            <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm mb-2">
-                  1
-                </div>
                 <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
                   {STRINGS.howItWorks.flow.step1Title}
                 </h3>
@@ -86,17 +83,14 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step1Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-blue-400">
+              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="p-4 rounded-lg bg-amber-50/60 border border-amber-200 flex flex-col justify-between">
+            <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <div className="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm mb-2">
-                  2
-                </div>
                 <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
                   {STRINGS.howItWorks.flow.step2Title}
                 </h3>
@@ -104,17 +98,14 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step2Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-amber-400">
+              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="p-4 rounded-lg bg-purple-50/60 border border-purple-200 flex flex-col justify-between">
+            <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <div className="w-8 h-8 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-sm mb-2">
-                  3
-                </div>
                 <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
                   {STRINGS.howItWorks.flow.step3Title}
                 </h3>
@@ -122,17 +113,14 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step3Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-purple-400">
+              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
 
             {/* Step 4 */}
-            <div className="p-4 rounded-lg bg-emerald-50/60 border border-emerald-200 flex flex-col justify-between">
+            <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <div className="w-8 h-8 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm mb-2">
-                  4
-                </div>
                 <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
                   {STRINGS.howItWorks.flow.step4Title}
                 </h3>
@@ -210,9 +198,9 @@ export const HowItWorksScreen: React.FC = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-            <div className="p-3.5 rounded-lg bg-blue-50/70 border border-blue-200 space-y-2">
-              <h3 className="font-bold text-sm text-blue-950 flex items-center gap-1.5">
-                <Layers className="w-4 h-4 text-blue-700" />
+            <div className="p-3.5 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] space-y-2">
+              <h3 className="font-bold text-sm text-[#3A1E13] flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-[#713F2B]" />
                 <span>Strict Separation of Concerns & Humidity Usage</span>
               </h3>
               <p className="text-[#333] leading-relaxed">

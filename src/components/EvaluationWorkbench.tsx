@@ -28,7 +28,7 @@ import {
   Search,
   Send,
   ShieldAlert,
-  Sparkles,
+  Database,
   Upload,
   UserCheck,
   XCircle,
@@ -394,7 +394,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
         <Layers className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-bold text-sm text-blue-950 uppercase tracking-wide">
+            <span className="font-bold text-sm text-blue-950">
               Evaluation Workbench (Team Only)
             </span>
             <span className="text-[11px] bg-blue-100 text-blue-900 border border-blue-300 px-2 py-0.5 rounded font-mono font-medium">
@@ -636,7 +636,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   onClick={handleLoadSampleEvents}
                   className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
                 >
-                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <Database className="w-4 h-4 text-gray-600" />
                   <span>Load Sample Event Log</span>
                 </button>
 
@@ -793,7 +793,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
               {/* Event-Level Table */}
               <div className="space-y-2">
-                <h4 className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide">
+                <h4 className="text-xs font-bold text-[#1A1A1A]">
                   Observed Events Detection Summary
                 </h4>
                 {evaluationOutput.eventSummaries.length === 0 ? (
@@ -870,7 +870,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               {/* False Alarm Episodes */}
               <div className="space-y-2 pt-2 border-t border-[#D5D9DF]">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h4 className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide">
+                  <h4 className="text-xs font-bold text-[#1A1A1A]">
                     False Alarm Episodes ({evaluationOutput.falseAlarmEpisodes.length})
                   </h4>
                   <span className="text-[11px] text-[#4A4F57] italic">
@@ -915,7 +915,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               {/* Split Stats (if enabled) */}
               {evaluationOutput.splitStats && (
                 <div className="space-y-3 pt-2 border-t border-[#D5D9DF]">
-                  <h4 className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold text-[#1A1A1A] flex items-center gap-1.5">
                     <Calendar className="w-4 h-4 text-blue-700" />
                     <span>Chronological Split Comparison (Split Date: {evaluationOutput.splitStats.splitDate})</span>
                   </h4>
@@ -1076,7 +1076,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                     onClick={handleLoadSampleNurseLog}
                     className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
                   >
-                    <Sparkles className="w-4 h-4 text-amber-600" />
+                    <Database className="w-4 h-4 text-gray-600" />
                     <span>Load Sample Nurse Log</span>
                   </button>
 
@@ -1218,7 +1218,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               {/* Complete Rows Table with Filter */}
               <div className="space-y-3 pt-2 border-t border-[#D5D9DF]">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h4 className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wide">
+                  <h4 className="text-xs font-bold text-[#1A1A1A]">
                     All Logged Rows ({nurseComparisonSummary.totalRows})
                   </h4>
 

@@ -99,8 +99,11 @@ export const AdvicePanel: React.FC<AdvicePanelProps> = ({ outlook }) => {
       {/* Tab Panel Content with Smooth Crossfade */}
       <div className="min-h-[70px] flex flex-col justify-center">
         {isLoading ? (
-          <div className="flex items-center gap-2 text-xs text-[#6B564B] italic py-2">
-            <Sparkles className="w-4 h-4 animate-pulse text-[#E8874A]" />
+          <div role="status" className="flex items-center gap-2 text-xs text-[#6B564B] italic py-2">
+            <span
+              aria-hidden="true"
+              className="w-4 h-4 shrink-0 rounded-full border-2 border-[#DFCBB3] border-t-[#713F2B] animate-spin"
+            />
             <span>{STRINGS.advice.preparing}</span>
           </div>
         ) : adviceData ? (

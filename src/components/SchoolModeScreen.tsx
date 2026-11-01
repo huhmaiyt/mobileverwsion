@@ -785,7 +785,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-sm">
               {!schoolPolicy.isConfigured || schoolPolicy.isStarterConfig
-                ? 'Starter Configuration — Not an Approved School Policy'
+                ? 'No approved school policy configured'
                 : schoolPolicy.isFictionalDemo
                 ? 'FICTIONAL TEST POLICY (Demonstration Only — Not Real Policy)'
                 : `Active Policy: ${schoolPolicy.schoolName}`}
@@ -855,7 +855,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
         >
           <OutlineDrawHeading>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#4A4F57]">
+              <span className="text-xs font-bold text-[#4A4F57]">
                 Regional Dust Risk (DustWatch)
               </span>
               <span
@@ -896,7 +896,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
         >
           <OutlineDrawHeading>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#4A4F57]">
+              <span className="text-xs font-bold text-[#4A4F57]">
                 School Activity Status ({selectedActivity.toUpperCase()})
               </span>
               {getActionBadge(currentActivityAssessment, schoolPolicy.isConfigured && !schoolPolicy.isStarterConfig)}
@@ -1417,7 +1417,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
 
           {/* Triggered Rules Breakdown */}
           <div>
-            <div className="text-xs font-semibold text-[#4A4F57] uppercase tracking-wider mb-2">
+            <div className="text-xs font-semibold text-[#4A4F57] mb-2">
               Policy Rule Evaluation & Triggered Conditions
             </div>
 
