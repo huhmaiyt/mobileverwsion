@@ -785,7 +785,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-bold text-sm">
               {!schoolPolicy.isConfigured || schoolPolicy.isStarterConfig
-                ? 'No approved school policy loaded'
+                ? 'No approved school policy configured'
                 : schoolPolicy.isFictionalDemo
                 ? 'FICTIONAL TEST POLICY (Demonstration Only — Not Real Policy)'
                 : `Active Policy: ${schoolPolicy.schoolName}`}
