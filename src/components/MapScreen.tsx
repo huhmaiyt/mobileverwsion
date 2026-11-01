@@ -309,7 +309,6 @@ export const MapScreen: React.FC<MapScreenProps> = ({
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
             {/* Tile 1: Current Condition (Now) */}
             <div
-              aria-current={viewMode === 'now' ? 'true' : undefined}
               className={`p-3.5 rounded-lg border text-left ${
                 viewMode === 'now'
                   ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
@@ -333,13 +332,12 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 </span>
               </div>
               <div className="text-[11px] text-[#8C6D58] mt-1">
-                Measured at current hour
+                Estimated for the current hour
               </div>
             </div>
 
             {/* Tile 2: 12-Hour Forecast Peak */}
             <div
-              aria-current={viewMode === 'highest12h' ? 'true' : undefined}
               className={`p-3.5 rounded-lg border text-left ${
                 viewMode === 'highest12h'
                   ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
