@@ -199,8 +199,8 @@ export const HowItWorksScreen: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
             <div className="p-3.5 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] space-y-2">
-              <h3 className="font-bold text-sm text-blue-950 flex items-center gap-1.5">
-                <Layers className="w-4 h-4 text-blue-700" />
+              <h3 className="font-bold text-sm text-[#3A1E13] flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-[#713F2B]" />
                 <span>Strict Separation of Concerns & Humidity Usage</span>
               </h3>
               <p className="text-[#333] leading-relaxed">
