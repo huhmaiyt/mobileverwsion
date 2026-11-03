@@ -63,10 +63,10 @@ export const HowItWorksScreen: React.FC = () => {
         duration={0.75}
         delay={0}
         aria-labelledby="flow-heading"
-        className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4"
+        className="dw-panel p-5 space-y-4"
       >
         <OutlineDrawHeading>
-          <h2 id="flow-heading" className="text-base font-bold text-[#1A1A1A]">
+          <h2 id="flow-heading" className="text-base font-bold text-[#2D221C]">
             Pipeline Flow Architecture
           </h2>
         </OutlineDrawHeading>
@@ -76,10 +76,10 @@ export const HowItWorksScreen: React.FC = () => {
             {/* Step 1 */}
             <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
+                <h3 className="font-bold text-sm text-[#2D221C] mb-1">
                   {STRINGS.howItWorks.flow.step1Title}
                 </h3>
-                <p className="text-xs text-[#4A4F57] leading-relaxed">
+                <p className="text-xs text-[#5A453A] leading-relaxed">
                   {STRINGS.howItWorks.flow.step1Desc}
                 </p>
               </div>
@@ -91,10 +91,10 @@ export const HowItWorksScreen: React.FC = () => {
             {/* Step 2 */}
             <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
+                <h3 className="font-bold text-sm text-[#2D221C] mb-1">
                   {STRINGS.howItWorks.flow.step2Title}
                 </h3>
-                <p className="text-xs text-[#4A4F57] leading-relaxed">
+                <p className="text-xs text-[#5A453A] leading-relaxed">
                   {STRINGS.howItWorks.flow.step2Desc}
                 </p>
               </div>
@@ -106,10 +106,10 @@ export const HowItWorksScreen: React.FC = () => {
             {/* Step 3 */}
             <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
+                <h3 className="font-bold text-sm text-[#2D221C] mb-1">
                   {STRINGS.howItWorks.flow.step3Title}
                 </h3>
-                <p className="text-xs text-[#4A4F57] leading-relaxed">
+                <p className="text-xs text-[#5A453A] leading-relaxed">
                   {STRINGS.howItWorks.flow.step3Desc}
                 </p>
               </div>
@@ -121,10 +121,10 @@ export const HowItWorksScreen: React.FC = () => {
             {/* Step 4 */}
             <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
+                <h3 className="font-bold text-sm text-[#2D221C] mb-1">
                   {STRINGS.howItWorks.flow.step4Title}
                 </h3>
-                <p className="text-xs text-[#4A4F57] leading-relaxed">
+                <p className="text-xs text-[#5A453A] leading-relaxed">
                   {STRINGS.howItWorks.flow.step4Desc}
                 </p>
               </div>
@@ -183,17 +183,17 @@ export const HowItWorksScreen: React.FC = () => {
         borderRadius={8}
         duration={0.75}
         delay={0.06}
-        className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4"
+        className="dw-panel p-5 space-y-4"
       >
         <OutlineDrawHeading>
-          <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
+          <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
             <GraduationCap className="w-5 h-5 text-amber-700" />
             <span>School Mode: Architecture & Nurse Decision Support</span>
           </h2>
         </OutlineDrawHeading>
 
         <OutlineDrawBody>
-          <p className="text-sm text-[#1A1A1A] leading-relaxed mb-4">
+          <p className="text-sm text-[#2D221C] leading-relaxed mb-4">
             Developed in consultation with UAE school nurses and health coordinators, School Mode introduces a dedicated decision-support workflow for outdoor recess and Physical Education (PE).
           </p>
 
@@ -233,9 +233,9 @@ export const HowItWorksScreen: React.FC = () => {
         </OutlineDrawBody>
 
         <OutlineDrawVisual>
-          <div className="p-3.5 bg-gray-50 rounded-lg border border-gray-200 text-xs space-y-2">
-            <h4 className="font-bold text-[#1A1A1A]">Rule Hierarchy & Decision Precedence:</h4>
-            <p className="text-[#4A4F57] leading-relaxed">
+          <div className="p-3.5 bg-[#F7F1E8] rounded-lg border border-[#DFCBB3] text-xs space-y-2">
+            <h4 className="font-bold text-[#2D221C]">Rule Hierarchy & Decision Precedence:</h4>
+            <p className="text-[#5A453A] leading-relaxed">
               When multiple thresholds are simultaneously triggered (e.g. Extreme Heat Index + Elevated Dust), the system applies strict safety precedence:
               <br />
               <span className="font-semibold text-red-700">Cancel / Move Indoors</span> takes precedence over <span className="font-semibold text-amber-700">Shorten / Restrict</span>, which takes precedence over <span className="font-semibold text-emerald-700">Normal Outdoor Activity</span>.
@@ -246,18 +246,18 @@ export const HowItWorksScreen: React.FC = () => {
       </OutlineDrawCard>
 
       {/* 3. Data Sources & Transparency Matrix */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Database className="w-4 h-4 text-blue-700" />
+      <section className="dw-panel p-5 space-y-4">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <Database className="w-4 h-4 text-[#244C3B]" />
           <span>Data Sources & Model Provenance Matrix</span>
         </h2>
-        <p className="text-sm text-[#1A1A1A] leading-relaxed">
+        <p className="text-sm text-[#2D221C] leading-relaxed">
           Full scientific transparency regarding the operational data feeds, physical sensors, and reanalysis models utilized across DustWatch:
         </p>
 
-        <div className="overflow-x-auto border border-[#D5D9DF] rounded-lg">
+        <div className="overflow-x-auto border border-[#DFCBB3] rounded-lg">
           <table className="w-full text-xs text-left">
-            <thead className="bg-gray-50 border-b border-[#D5D9DF] text-[#1A1A1A]">
+            <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#2D221C]">
               <tr>
                 <th className="py-2.5 px-3 font-bold">Data Feed / System</th>
                 <th className="py-2.5 px-3 font-bold">Parameters / Variables</th>
@@ -266,25 +266,25 @@ export const HowItWorksScreen: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              <tr className="hover:bg-gray-50">
-                <td className="py-2.5 px-3 font-semibold text-blue-900">Open-Meteo Weather API</td>
+              <tr className="hover:bg-[#F7F1E8]">
+                <td className="py-2.5 px-3 font-semibold text-[#1B3A2D]">Open-Meteo Weather API</td>
                 <td className="py-2.5 px-3">Temperature, Relative Humidity, Wind Speed, Wind Gusts, Wind Direction, Visibility</td>
                 <td className="py-2.5 px-3">Open-Meteo weather model forecast (model selection varies)</td>
                 <td className="py-2.5 px-3">Atmospheric forcing for dust transport, convective gust scoring & Heat Index</td>
               </tr>
-              <tr className="hover:bg-gray-50">
+              <tr className="hover:bg-[#F7F1E8]">
                 <td className="py-2.5 px-3 font-semibold text-amber-900">Open-Meteo Air Quality API</td>
                 <td className="py-2.5 px-3">PM10, PM2.5, Dust Concentration, Aerosol Optical Depth (AOD @ 550nm)</td>
                 <td className="py-2.5 px-3 text-amber-800 font-medium">Chemical transport model forecasts (Copernicus CAMS). Model-derived, NOT live ground-level optical monitors.</td>
                 <td className="py-2.5 px-3">Particulate loading for 12-hour dust scoring and school policy checks</td>
               </tr>
-              <tr className="hover:bg-gray-50">
+              <tr className="hover:bg-[#F7F1E8]">
                 <td className="py-2.5 px-3 font-semibold text-purple-900">NASA Earthdata & Worldview</td>
                 <td className="py-2.5 px-3">True-color imagery & Corrected Reflectance (MODIS Terra/Aqua, VIIRS SNPP/NOAA-20)</td>
                 <td className="py-2.5 px-3">Spaceborne polar-orbiting satellite optical radiometer sensors</td>
                 <td className="py-2.5 px-3">Contextual verification link for visual tracking of synoptic dust plumes (not scored)</td>
               </tr>
-              <tr className="hover:bg-gray-50">
+              <tr className="hover:bg-[#F7F1E8]">
                 <td className="py-2.5 px-3 font-semibold text-emerald-900">NASA MERRA-2 Reanalysis</td>
                 <td className="py-2.5 px-3 font-mono">DUCMASS (Dust column mass density, kg/m²), TOTEXTTAU (Aerosol optical thickness extinction @ 550nm)</td>
                 <td className="py-2.5 px-3">Global atmospheric reanalysis incorporating Goddard Earth Observing System (GEOS-5)</td>
@@ -305,19 +305,19 @@ export const HowItWorksScreen: React.FC = () => {
       </section>
 
       {/* 4. What DustWatch Predicts and Does Not */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
+      <section className="dw-panel p-5 space-y-4">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
           <AlertTriangle className="w-4 h-4 text-amber-600" />
           <span>{STRINGS.howItWorks.predictsTitle}</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {STRINGS.howItWorks.predictsItems.map((item, idx) => (
-            <div key={idx} className="p-3 rounded-md bg-gray-50 border border-gray-200">
-              <h3 className="font-bold text-sm text-[#1A1A1A] mb-1">
+            <div key={idx} className="p-3 rounded-md bg-[#F7F1E8] border border-[#DFCBB3]">
+              <h3 className="font-bold text-sm text-[#2D221C] mb-1">
                 {item.title}
               </h3>
-              <p className="text-xs text-[#4A4F57] leading-relaxed">
+              <p className="text-xs text-[#5A453A] leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -326,12 +326,12 @@ export const HowItWorksScreen: React.FC = () => {
       </section>
 
       {/* 5. Responsible AI Principles & Human Safety */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
+      <section className="dw-panel p-5 space-y-3">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-emerald-700" />
           <span>{STRINGS.howItWorks.responsibleTitle}</span>
         </h2>
-        <p className="text-sm text-[#1A1A1A] leading-relaxed">
+        <p className="text-sm text-[#2D221C] leading-relaxed">
           {STRINGS.howItWorks.responsibleDesc}
         </p>
         <div className="pt-2">
@@ -339,7 +339,7 @@ export const HowItWorksScreen: React.FC = () => {
             href={STRINGS.disclaimer.ncmUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-900 underline"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#244C3B] hover:text-[#1B3A2D] underline"
           >
             <span>Visit the UAE National Center of Meteorology (NCM)</span>
             <ExternalLink className="w-4 h-4" />
@@ -348,12 +348,12 @@ export const HowItWorksScreen: React.FC = () => {
       </section>
 
       {/* 6. What Gemini Does vs. What the Team Built */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-blue-600" />
+      <section className="dw-panel p-5 space-y-3">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <MessageSquare className="w-4 h-4 text-[#244C3B]" />
           <span>{STRINGS.howItWorks.geminiTitle}</span>
         </h2>
-        <p className="text-sm text-[#1A1A1A] leading-relaxed">
+        <p className="text-sm text-[#2D221C] leading-relaxed">
           {STRINGS.howItWorks.geminiDesc}
         </p>
       </section>

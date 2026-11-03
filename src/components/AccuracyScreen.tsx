@@ -119,16 +119,16 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
       val !== null ? `${(val * 100).toFixed(1)}%` : 'n/a';
 
     return (
-      <tr key={name} className="hover:bg-gray-50 border-b border-[#D5D9DF]">
-        <td className="py-2.5 px-3 font-semibold text-[#1A1A1A]">{name}</td>
+      <tr key={name} className="hover:bg-[#F7F1E8] border-b border-[#DFCBB3]">
+        <td className="py-2.5 px-3 font-semibold text-[#2D221C]">{name}</td>
         <td className="py-2.5 px-3 text-center font-mono">{stats.hits}</td>
         <td className="py-2.5 px-3 text-center font-mono text-red-600 font-bold">{stats.misses}</td>
         <td className="py-2.5 px-3 text-center font-mono text-amber-600">{stats.falseAlarms}</td>
         <td className="py-2.5 px-3 text-center font-mono text-emerald-600">{stats.correctNegatives}</td>
-        <td className="py-2.5 px-3 text-center font-semibold text-blue-700">{formatPct(stats.hitRate)}</td>
+        <td className="py-2.5 px-3 text-center font-semibold text-[#244C3B]">{formatPct(stats.hitRate)}</td>
         <td className="py-2.5 px-3 text-center text-red-700">{formatPct(stats.missRate)}</td>
         <td className="py-2.5 px-3 text-center text-amber-800">{formatPct(stats.falseAlarmRatio)}</td>
-        <td className="py-2.5 px-3 text-center font-bold text-[#1A1A1A]">{formatPct(stats.accuracy)}</td>
+        <td className="py-2.5 px-3 text-center font-bold text-[#2D221C]">{formatPct(stats.accuracy)}</td>
       </tr>
     );
   };
@@ -172,7 +172,7 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
             </OutlineDrawHeading>
 
             <OutlineDrawBody>
-              <div className="p-3 bg-white/90 rounded border border-amber-200 text-sm font-mono text-[#1A1A1A]">
+              <div className="p-3 bg-white/90 rounded border border-amber-200 text-sm font-mono text-[#2D221C]">
                 {APP_CONFIG.eventDefinitionText}
               </div>
             </OutlineDrawBody>
@@ -198,28 +198,28 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
         borderRadius={8}
         duration={0.75}
         delay={0.08}
-        className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3"
+        className="dw-panel p-5 space-y-3"
       >
         <OutlineDrawHeading>
-          <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-            <Info className="w-4 h-4 text-blue-700" />
+          <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+            <Info className="w-4 h-4 text-[#244C3B]" />
             <span>Historical Validation Methodology: Chronological Splits & Benchmarks</span>
           </h2>
         </OutlineDrawHeading>
 
         <OutlineDrawBody>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs mb-3">
-            <div className="p-3 bg-gray-50 rounded border border-gray-200 space-y-1.5">
-              <h3 className="font-bold text-[#1A1A1A]">1. Chronological Time-Series Splits (No Random K-Fold)</h3>
-              <p className="text-[#4A4F57] leading-relaxed">
+            <div className="p-3 bg-[#F7F1E8] rounded border border-[#DFCBB3] space-y-1.5">
+              <h3 className="font-bold text-[#2D221C]">1. Chronological Time-Series Splits (No Random K-Fold)</h3>
+              <p className="text-[#5A453A] leading-relaxed">
                 Atmospheric data is heavily auto-correlated across consecutive hours and days. Random k-fold cross-validation causes severe data leakage (future hours leaking into training folds).
                 DustWatch strictly mandates chronological train/test partitioning (e.g. 2021–2022 train, 2023–2024 test &mdash; <em>Example of a planned method, not what was done</em>) across all 10 UAE grid points.
               </p>
             </div>
 
-            <div className="p-3 bg-gray-50 rounded border border-gray-200 space-y-1.5">
-              <h3 className="font-bold text-[#1A1A1A]">2. Persistence Benchmark ("the next 12 hours look like now")</h3>
-              <p className="text-[#4A4F57] leading-relaxed">
+            <div className="p-3 bg-[#F7F1E8] rounded border border-[#DFCBB3] space-y-1.5">
+              <h3 className="font-bold text-[#2D221C]">2. Persistence Benchmark ("the next 12 hours look like now")</h3>
+              <p className="text-[#5A453A] leading-relaxed">
                 Any valid predictive system must outperform persistence. In weather forecasting, the persistence benchmark assumes the next 12 hours look like now.
                 In our CSV evaluation tool, the persistence benchmark ("the next 12 hours look like now") is tracked alongside the baseline rule score to ensure true skill score gain.
               </p>
@@ -241,10 +241,10 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
         borderRadius={8}
         duration={0.7}
         delay={0.12}
-        className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4"
+        className="dw-panel p-5 space-y-4"
       >
         <OutlineDrawHeading>
-          <h2 className="text-base font-bold text-[#1A1A1A]">
+          <h2 className="text-base font-bold text-[#2D221C]">
             {STRINGS.accuracy.outcomesTitle}
           </h2>
         </OutlineDrawHeading>
@@ -252,9 +252,9 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
         <OutlineDrawBody>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {STRINGS.accuracy.outcomes.map((item, idx) => (
-              <div key={idx} className="p-3.5 rounded-lg border border-[#D5D9DF] bg-gray-50/50">
+              <div key={idx} className="p-3.5 rounded-lg border border-[#DFCBB3] bg-[#F7F1E8]">
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="font-bold text-sm text-[#1A1A1A]">{item.name}</span>
+                  <span className="font-bold text-sm text-[#2D221C]">{item.name}</span>
                   <span
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${
                       item.name === 'Hit'
@@ -263,13 +263,13 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                         ? 'bg-red-100 text-red-800 border-red-300'
                         : item.name === 'False Alarm'
                         ? 'bg-amber-100 text-amber-800 border-amber-300'
-                        : 'bg-blue-100 text-blue-800 border-blue-300'
+                        : 'bg-[#E8F0E7] text-[#1B3A2D] border-[#C5D9C5]'
                     }`}
                   >
                     {item.badge}
                   </span>
                 </div>
-                <p className="text-xs text-[#4A4F57] leading-relaxed">
+                <p className="text-xs text-[#5A453A] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -279,30 +279,30 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
       </OutlineDrawCard>
 
       {/* 3. Official Results Panel */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <ShieldAlert className="w-4 h-4 text-gray-700" />
+      <section className="dw-panel p-5 space-y-3">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <ShieldAlert className="w-4 h-4 text-[#2D221C]" />
           <span>{STRINGS.accuracy.officialTitle}</span>
         </h2>
 
         {!APP_CONFIG.evaluationResults ? (
-          <div className="p-4 rounded-lg bg-gray-50 border border-gray-200 text-center py-6">
-            <h3 className="font-bold text-base text-[#1A1A1A] mb-1">
+          <div className="p-4 rounded-lg bg-[#F7F1E8] border border-[#DFCBB3] text-center py-6">
+            <h3 className="font-bold text-base text-[#2D221C] mb-1">
               {STRINGS.accuracy.notYetEvaluatedTitle}
             </h3>
-            <p className="text-xs text-[#4A4F57] max-w-xl mx-auto leading-relaxed">
+            <p className="text-xs text-[#5A453A] max-w-xl mx-auto leading-relaxed">
               {STRINGS.accuracy.notYetEvaluatedDesc}
             </p>
           </div>
         ) : (
           <div className="space-y-3">
             {/* If filled in config, render official table */}
-            <p className="text-xs text-[#4A4F57]">
+            <p className="text-xs text-[#5A453A]">
               Dataset: {APP_CONFIG.evaluationResults.datasetDescription} ({APP_CONFIG.evaluationResults.period})
             </p>
-            <div className="overflow-x-auto border border-[#D5D9DF] rounded-md">
+            <div className="overflow-x-auto border border-[#DFCBB3] rounded-md">
               <table className="w-full text-xs text-left">
-                <thead className="bg-gray-50 border-b border-[#D5D9DF]">
+                <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3]">
                   <tr>
                     <th className="py-2 px-3">Predictor</th>
                     <th className="py-2 px-3 text-center">Hits</th>
@@ -329,20 +329,20 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
       </section>
 
       {/* 4. Team CSV Evaluation Tool */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
+      <section className="dw-panel p-5 space-y-4">
         <div>
-          <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-            <FileSpreadsheet className="w-4 h-4 text-blue-700" />
+          <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+            <FileSpreadsheet className="w-4 h-4 text-[#244C3B]" />
             <span>{STRINGS.accuracy.csvToolTitle}</span>
           </h2>
-          <p className="text-xs text-[#4A4F57] mt-1">
+          <p className="text-xs text-[#5A453A] mt-1">
             {STRINGS.accuracy.csvToolDesc}
           </p>
         </div>
 
         {/* Action Bar: Upload, Download Template */}
         <div className="flex flex-wrap items-center gap-3">
-          <label className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md text-xs sm:text-sm font-semibold hover:bg-blue-700 cursor-pointer min-h-[44px]">
+          <label className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded-md text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[44px]">
             <Upload className="w-4 h-4" />
             <span>{STRINGS.accuracy.csvUploadLabel}</span>
             <input
@@ -356,9 +356,9 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
           <button
             type="button"
             onClick={handleDownloadTemplate}
-            className="inline-flex items-center gap-2 px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded-md text-xs sm:text-sm font-medium hover:bg-gray-50 min-h-[44px]"
+            className="inline-flex items-center gap-2 px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded-md text-xs sm:text-sm font-medium hover:bg-[#F7F1E8] min-h-[44px]"
           >
-            <Download className="w-4 h-4 text-gray-600" />
+            <Download className="w-4 h-4 text-[#6B564B]" />
             <span>{STRINGS.accuracy.csvDownloadTemplate}</span>
           </button>
         </div>
@@ -376,24 +376,24 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
 
         {/* Evaluation Results Output */}
         {csvEvaluation && (
-          <div className="space-y-4 pt-3 border-t border-[#D5D9DF]">
+          <div className="space-y-4 pt-3 border-t border-[#DFCBB3]">
             {/* Summary counters */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              <div className="p-2.5 rounded bg-gray-50 border border-gray-200">
-                <span className="text-[#4A4F57] block">Valid Data Rows</span>
-                <span className="font-bold text-base text-[#1A1A1A]">{csvEvaluation.validRowsCount}</span>
+              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
+                <span className="text-[#5A453A] block">Valid Data Rows</span>
+                <span className="font-bold text-base text-[#2D221C]">{csvEvaluation.validRowsCount}</span>
               </div>
-              <div className="p-2.5 rounded bg-gray-50 border border-gray-200">
-                <span className="text-[#4A4F57] block">Observed Events</span>
-                <span className="font-bold text-base text-[#1A1A1A]">{csvEvaluation.observedEventsCount}</span>
+              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
+                <span className="text-[#5A453A] block">Observed Events</span>
+                <span className="font-bold text-base text-[#2D221C]">{csvEvaluation.observedEventsCount}</span>
               </div>
-              <div className="p-2.5 rounded bg-gray-50 border border-gray-200">
-                <span className="text-[#4A4F57] block">Ignored Invalid Rows</span>
+              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
+                <span className="text-[#5A453A] block">Ignored Invalid Rows</span>
                 <span className="font-bold text-base text-amber-700">{csvEvaluation.ignoredRowsCount}</span>
               </div>
-              <div className="p-2.5 rounded bg-gray-50 border border-gray-200">
-                <span className="text-[#4A4F57] block">Event Threshold</span>
-                <span className="font-bold text-base text-blue-700">&ge; {APP_CONFIG.eventPredictionLevel}</span>
+              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
+                <span className="text-[#5A453A] block">Event Threshold</span>
+                <span className="font-bold text-base text-[#244C3B]">&ge; {APP_CONFIG.eventPredictionLevel}</span>
               </div>
             </div>
 
@@ -407,12 +407,12 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
 
             {/* A6: Provenance Display when results are from Workbench */}
             {csvEvaluation.workbenchMetadata && (
-              <div className="p-4 bg-blue-50 border border-blue-300 rounded-lg space-y-3">
+              <div className="p-4 bg-[#E8F0E7] border border-[#C5D9C5] rounded-lg space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs bg-blue-100 text-blue-900 border border-blue-300 px-2 py-0.5 rounded font-bold uppercase tracking-wide">
+                  <span className="text-xs bg-[#E8F0E7] text-[#1B3A2D] border border-[#C5D9C5] px-2 py-0.5 rounded font-bold uppercase tracking-wide">
                     Evaluation Workbench Run
                   </span>
-                  <span className="text-xs text-blue-950 font-semibold">
+                  <span className="text-xs text-[#1B3A2D] font-semibold">
                     {csvEvaluation.workbenchMetadata.hindcastLabel}
                   </span>
                 </div>
@@ -428,7 +428,7 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-blue-900 pt-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1B3A2D] pt-1">
                   <div>
                     <strong>Searched Period: </strong>
                     <span className="font-mono">
@@ -442,30 +442,30 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                 </div>
 
                 {/* Thresholds used */}
-                <div className="pt-2 border-t border-blue-200 text-xs text-blue-950 space-y-1">
+                <div className="pt-2 border-t border-[#C5D9C5] text-xs text-[#1B3A2D] space-y-1">
                   <strong>Thresholds &amp; Cutoffs Tested:</strong>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 font-mono text-[11px] pt-1">
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">Dust: 20-300 (30%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">PM10: 50-400 (25%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">Gusts: 25-70 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">Wind: 15-50 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">AOD: 0.2-1.5 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">Vis: 10k-1k (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200">Humidity: 60-15% (5%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-blue-200 font-bold">Event: &ge; {APP_CONFIG.eventPredictionLevel}</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Dust: 20-300 (30%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">PM10: 50-400 (25%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Gusts: 25-70 (10%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Wind: 15-50 (10%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">AOD: 0.2-1.5 (10%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Vis: 10k-1k (10%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Humidity: 60-15% (5%)</span>
+                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5] font-bold">Event: &ge; {APP_CONFIG.eventPredictionLevel}</span>
                   </div>
                 </div>
 
                 {/* Chronological Split Display */}
                 {csvEvaluation.workbenchMetadata.splitInfo && (
-                  <div className="pt-2 border-t border-blue-200 text-xs text-blue-950 space-y-2">
+                  <div className="pt-2 border-t border-[#C5D9C5] text-xs text-[#1B3A2D] space-y-2">
                     <div className="flex items-center justify-between">
                       <strong>Chronological Partition Split (Date: {csvEvaluation.workbenchMetadata.splitInfo.splitDate})</strong>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <div className="p-2 bg-white rounded border border-blue-200 space-y-1">
-                        <span className="font-bold text-gray-800 block">Tuning Period</span>
-                        <p className="text-[11px] text-gray-600 italic">Only change thresholds using the tuning period.</p>
+                      <div className="p-2 bg-[#FFFDF8] rounded border border-[#C5D9C5] space-y-1">
+                        <span className="font-bold text-[#2D221C] block">Tuning Period</span>
+                        <p className="text-[11px] text-[#6B564B] italic">Only change thresholds using the tuning period.</p>
                         <div className="font-mono text-[11px] pt-1">
                           Hits: {csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.hits} |
                           Misses: {csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.misses} |
@@ -475,9 +475,9 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                         </div>
                       </div>
 
-                      <div className="p-2 bg-white rounded border border-blue-200 space-y-1">
-                        <span className="font-bold text-blue-900 block">Test Period</span>
-                        <p className="text-[11px] text-blue-900 font-semibold">Report the test period.</p>
+                      <div className="p-2 bg-[#FFFDF8] rounded border border-[#C5D9C5] space-y-1">
+                        <span className="font-bold text-[#1B3A2D] block">Test Period</span>
+                        <p className="text-[11px] text-[#1B3A2D] font-semibold">Report the test period.</p>
                         <div className="font-mono text-[11px] pt-1">
                           Hits: {csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.hits} |
                           Misses: {csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.misses} |
@@ -493,9 +493,9 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
             )}
 
             {/* Results Table */}
-            <div className="overflow-x-auto border border-[#D5D9DF] rounded-md">
+            <div className="overflow-x-auto border border-[#DFCBB3] rounded-md">
               <table className="w-full text-xs text-left">
-                <thead className="bg-gray-50 border-b border-[#D5D9DF] text-[#4A4F57]">
+                <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#5A453A]">
                   <tr>
                     <th className="py-2.5 px-3">Predictor</th>
                     <th className="py-2.5 px-3 text-center">Hits</th>
@@ -518,7 +518,7 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
               </table>
             </div>
 
-            <p className="text-[11px] text-[#4A4F57] italic">
+            <p className="text-[11px] text-[#5A453A] italic">
               {STRINGS.accuracy.accuracyCaveat}
             </p>
 
@@ -529,11 +529,11 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                   Example Misses (Observed = 1, Predicted &lt; High)
                 </h4>
                 {csvEvaluation.exampleMisses.length === 0 ? (
-                  <p className="text-[#4A4F57]">No misses detected in evaluated dataset.</p>
+                  <p className="text-[#5A453A]">No misses detected in evaluated dataset.</p>
                 ) : (
                   <ul className="space-y-1 font-mono text-[11px]">
                     {csvEvaluation.exampleMisses.map((ex, i) => (
-                      <li key={i} className="text-[#1A1A1A] bg-white/70 p-1 rounded border border-red-100">
+                      <li key={i} className="text-[#2D221C] bg-white/70 p-1 rounded border border-red-100">
                         Row {ex.rowNumber}: {ex.city} ({ex.timestamp}) - Predicted: {ex.predictedLevel}
                       </li>
                     ))}
@@ -546,11 +546,11 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
                   Example False Alarms (Observed = 0, Predicted &ge; High)
                 </h4>
                 {csvEvaluation.exampleFalseAlarms.length === 0 ? (
-                  <p className="text-[#4A4F57]">No false alarms detected in evaluated dataset.</p>
+                  <p className="text-[#5A453A]">No false alarms detected in evaluated dataset.</p>
                 ) : (
                   <ul className="space-y-1 font-mono text-[11px]">
                     {csvEvaluation.exampleFalseAlarms.map((ex, i) => (
-                      <li key={i} className="text-[#1A1A1A] bg-white/70 p-1 rounded border border-amber-100">
+                      <li key={i} className="text-[#2D221C] bg-white/70 p-1 rounded border border-amber-100">
                         Row {ex.rowNumber}: {ex.city} ({ex.timestamp}) - Predicted: {ex.predictedLevel}
                       </li>
                     ))}
@@ -561,8 +561,8 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
 
             {/* Copy Results as JSON */}
             <div className="pt-2 flex items-center justify-between flex-wrap gap-2">
-              <p className="text-xs text-[#4A4F57]">
-                Paste these verified results into <code className="bg-gray-100 px-1 py-0.5 rounded">config.evaluationResults</code> once team review is complete.
+              <p className="text-xs text-[#5A453A]">
+                Paste these verified results into <code className="bg-[#F3EADD] px-1 py-0.5 rounded">config.evaluationResults</code> once team review is complete.
               </p>
               <button
                 type="button"
@@ -578,12 +578,12 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
       </section>
 
       {/* 5. Known Limitations List */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Info className="w-4 h-4 text-gray-700" />
+      <section className="dw-panel p-5 space-y-3">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <Info className="w-4 h-4 text-[#2D221C]" />
           <span>{STRINGS.accuracy.limitationsTitle}</span>
         </h2>
-        <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#4A4F57] leading-relaxed">
+        <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#5A453A] leading-relaxed">
           {STRINGS.accuracy.limitations.map((lim, idx) => (
             <li key={idx}>{lim}</li>
           ))}

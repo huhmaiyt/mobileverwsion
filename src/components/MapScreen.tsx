@@ -80,6 +80,26 @@ const AnimatedScore: React.FC<{ value: number }> = ({ value }) => {
   return <span className="font-mono tabular-nums">{displayValue}</span>;
 };
 
+/**
+ * Decorative 12-hour bar strip for a stat card. Bars use the existing risk-category colours,
+ * so risk meaning never depends on the card tint. Purely visual: values are shown as text elsewhere.
+ */
+const MiniBars: React.FC<{ results: HourlyRiskResult[]; highlightIndex: number }> = ({ results, highlightIndex }) => (
+  <div className="mt-3 flex h-9 items-end gap-[3px]" aria-hidden="true">
+    {results.map((r, i) => (
+      <span
+        key={r.hourIndex}
+        style={{
+          height: `${Math.max(12, Math.min(100, r.finalScore))}%`,
+          backgroundColor: APP_CONFIG.colors[r.category].bg,
+          opacity: i === highlightIndex ? 1 : 0.38,
+        }}
+        className="flex-1 rounded-[3px]"
+      />
+    ))}
+  </div>
+);
+
 export const MapScreen: React.FC<MapScreenProps> = ({
   outlooks,
   selectedCityId,
@@ -158,7 +178,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
          ========================================================================= */}
       <section aria-labelledby="heading-current-conditions" className="space-y-4">
         {/* Top Control Bar: Mode Toggle & Freshness */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-3.5 sm:px-4 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 dw-panel p-3.5 sm:px-4 shadow-xs">
           <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <span className="text-xs font-bold uppercase tracking-wider text-[#713F2B] shrink-0">
               Risk Assessment Mode:
@@ -183,7 +203,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 {viewMode === 'now' && (
                   <motion.span
                     layoutId={shouldReduceMotion ? undefined : 'riskPeriodPill'}
-                    className="absolute inset-0 bg-white rounded-md shadow-xs -z-0"
+                    className="absolute inset-0 bg-[#FFFDF8] rounded-md shadow-xs -z-0"
                     transition={{ type: 'spring', stiffness: 500, damping: 38 }}
                   />
                 )}
@@ -203,7 +223,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 {viewMode === 'highest12h' && (
                   <motion.span
                     layoutId={shouldReduceMotion ? undefined : 'riskPeriodPill'}
-                    className="absolute inset-0 bg-white rounded-md shadow-xs -z-0"
+                    className="absolute inset-0 bg-[#FFFDF8] rounded-md shadow-xs -z-0"
                     transition={{ type: 'spring', stiffness: 500, damping: 38 }}
                   />
                 )}
@@ -233,7 +253,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
         {/* Primary Selected Location Banner */}
         <div
           data-testid="risk-summary-banner"
-          className="bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-4 sm:p-7 shadow-xs space-y-5 sm:space-y-6"
+          className="dw-panel p-4 sm:p-7 shadow-xs space-y-5 sm:space-y-6"
         >
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 border-b border-[#DFCBB3] pb-5 sm:pb-6">
             {/* Left: Location title & City quick-switcher */}
@@ -309,16 +329,16 @@ export const MapScreen: React.FC<MapScreenProps> = ({
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
             {/* Tile 1: Current Condition (Now) */}
             <div
-              className={`p-3.5 rounded-lg border text-left ${
+              className={`dw-stat-orange p-4 text-left ${
                 viewMode === 'now'
-                  ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
-                  : 'bg-white border-[#DFCBB3]'
+                  ? '!border-2 !border-[#E8874A] shadow-xs'
+                  : ''
               }`}
             >
               <div className="flex items-center justify-between text-xs text-[#8C6D58] font-medium mb-1">
                 <span>{STRINGS.panel.riskNow}</span>
                 {viewMode === 'now' && (
-                  <span className="text-[10px] font-bold text-[#713F2B] bg-white px-1.5 py-0.2 rounded shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#713F2B] bg-[#FFFDF8] px-1.5 py-0.5 rounded-md shadow-2xs">
                     Viewing
                   </span>
                 )}
@@ -327,27 +347,28 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 <span className="font-bold text-base text-[#2D1A12]">
                   {levelNowCfg.label}
                 </span>
-                <span className="text-xs font-bold text-[#713F2B]">
+                <span className="text-2xl font-extrabold text-[#713F2B]">
                   <AnimatedScore value={currentOutlook.scoreNow} />
                 </span>
               </div>
-              <div className="text-[11px] text-[#8C6D58] mt-1">
+              <div className="text-[11px] text-[#5A453A] mt-1">
                 Estimated for the current hour
               </div>
+              <MiniBars results={currentOutlook.hourlyResults} highlightIndex={0} />
             </div>
 
             {/* Tile 2: 12-Hour Forecast Peak */}
             <div
-              className={`p-3.5 rounded-lg border text-left ${
+              className={`dw-stat-orange p-4 text-left ${
                 viewMode === 'highest12h'
-                  ? 'bg-[#E8D2B4]/50 border-2 border-[#E8874A] shadow-xs'
-                  : 'bg-white border-[#DFCBB3]'
+                  ? '!border-2 !border-[#E8874A] shadow-xs'
+                  : ''
               }`}
             >
               <div className="flex items-center justify-between text-xs text-[#8C6D58] font-medium mb-1">
                 <span>{STRINGS.panel.highestNext12h}</span>
                 {viewMode === 'highest12h' && (
-                  <span className="text-[10px] font-bold text-[#713F2B] bg-white px-1.5 py-0.2 rounded shadow-2xs">
+                  <span className="text-[10px] font-bold text-[#713F2B] bg-[#FFFDF8] px-1.5 py-0.5 rounded-md shadow-2xs">
                     Viewing
                   </span>
                 )}
@@ -356,17 +377,18 @@ export const MapScreen: React.FC<MapScreenProps> = ({
                 <span className="font-bold text-base text-[#2D1A12]">
                   {peakLevelCfg.label}
                 </span>
-                <span className="text-xs font-bold text-[#713F2B]">
+                <span className="text-2xl font-extrabold text-[#713F2B]">
                   <AnimatedScore value={currentOutlook.peakScore} />
                 </span>
               </div>
-              <div className="text-[11px] text-[#8C6D58] mt-1">
+              <div className="text-[11px] text-[#5A453A] mt-1">
                 Peak expected at {currentOutlook.peakHourTime}
               </div>
+              <MiniBars results={currentOutlook.hourlyResults} highlightIndex={currentOutlook.peakHourIndex} />
             </div>
 
             {/* Tile 3: Best 3-Hour Window */}
-            <div className="p-3.5 rounded-lg border border-[#DFCBB3] bg-white hover:border-[#244C3B]/50 transition-colors">
+            <div className="dw-stat-sage p-4 hover:border-[#244C3B]/50 transition-colors">
               <div className="text-xs font-semibold text-[#244C3B] flex items-center gap-1 mb-1">
                 <TrendingDown className="w-3.5 h-3.5 text-[#244C3B]" />
                 <span>{STRINGS.panel.bestWindow}</span>
@@ -380,7 +402,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             </div>
 
             {/* Tile 4: Worst 3-Hour Window */}
-            <div className="p-3.5 rounded-lg border border-[#DFCBB3] bg-[#FFF8F2] hover:border-[#E8874A]/60 transition-colors">
+            <div className="dw-stat-orange p-4 hover:border-[#E8874A]/60 transition-colors">
               <div className="text-xs font-semibold text-[#713F2B] flex items-center gap-1 mb-1">
                 <TrendingUp className="w-3.5 h-3.5 text-[#E8874A]" />
                 <span>{STRINGS.panel.worstWindow}</span>
@@ -438,7 +460,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             />
 
             {/* Quick Context Card */}
-            <div className="p-4 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl text-xs text-[#5A453A] space-y-2">
+            <div className="p-4 dw-panel text-xs text-[#5A453A] space-y-2">
               <div className="font-semibold text-[#3A1E13] flex items-center gap-1.5">
                 <Info className="w-4 h-4 text-[#E8874A]" />
                 <span>Interpreting the UAE Spatial Map</span>
@@ -517,7 +539,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
 
         {/* Quick At-a-Glance Telemetry Strip for Selected Hour */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
-          <div className="p-3 bg-white border border-[#CBD5CD] border-t-2 border-t-[#E8874A] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] border-t-2 border-t-[#E8874A] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Dust Concen.</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.dust?.rawValue !== null
@@ -527,7 +549,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 30%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] border-t-2 border-t-[#E8874A] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] border-t-2 border-t-[#E8874A] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">PM10 Dust</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.pm10?.rawValue !== null
@@ -537,7 +559,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 25%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Sustained Wind</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.wind_speed_10m?.rawValue !== null
@@ -547,7 +569,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 10%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Wind Gusts</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.wind_gusts_10m?.rawValue !== null
@@ -557,7 +579,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 10%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Visibility</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.visibility?.rawValue !== null
@@ -567,7 +589,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 10%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Aerosol Depth</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.aerosol_optical_depth?.rawValue !== null
@@ -577,7 +599,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
             <div className="text-[10px] text-[#5F6762] mt-0.5">Weight: 10%</div>
           </div>
 
-          <div className="p-3 bg-white border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
+          <div className="p-3 bg-[#FFFDF8] border border-[#CBD5CD] hover:border-[#244C3B]/40 rounded-lg transition-colors">
             <div className="text-[11px] text-[#5F6762]">Humidity</div>
             <div className="font-bold text-sm text-[#1E2522] mt-0.5 font-mono">
               {selectedHourResult.subScores.relative_humidity_2m?.rawValue !== null
@@ -624,7 +646,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Card 1: Confidence Evaluation */}
-          <div className="p-5 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
+          <div className="p-5 dw-panel flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#713F2B]">
@@ -655,7 +677,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
           </div>
 
           {/* Card 2: Freshness & Simulation Controls */}
-          <div className="p-5 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
+          <div className="p-5 dw-panel flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#713F2B]">
                 Telemetry Freshness
@@ -685,7 +707,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({
           </div>
 
           {/* Card 3: Provenance & External Ground Truth */}
-          <div className="p-5 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
+          <div className="p-5 dw-panel flex flex-col justify-between hover:border-[#E8874A]/40 transition-colors">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#713F2B]">
                 Model Provenance

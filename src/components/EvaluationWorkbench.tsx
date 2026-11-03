@@ -390,32 +390,32 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Provenance Banner */}
-      <div className="p-3.5 bg-blue-50 border-2 border-blue-300 rounded-lg flex items-start gap-3 shadow-xs">
-        <Layers className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
+      <div className="p-3.5 bg-[#E8F0E7] border-2 border-[#C5D9C5] rounded-lg flex items-start gap-3 shadow-xs">
+        <Layers className="w-5 h-5 text-[#244C3B] shrink-0 mt-0.5" />
         <div className="space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-bold text-sm text-blue-950">
+            <span className="font-bold text-sm text-[#1B3A2D]">
               Evaluation Workbench (Team Only)
             </span>
-            <span className="text-[11px] bg-blue-100 text-blue-900 border border-blue-300 px-2 py-0.5 rounded font-mono font-medium">
+            <span className="text-[11px] bg-[#E8F0E7] text-[#1B3A2D] border border-[#C5D9C5] px-2 py-0.5 rounded font-mono font-medium">
               100% Client-Side Browser Execution
             </span>
           </div>
-          <p className="text-xs text-blue-900 font-semibold">
+          <p className="text-xs text-[#1B3A2D] font-semibold">
             {HINDCAST_PROVENANCE_LABEL}
           </p>
         </div>
       </div>
 
       {/* Tabs: Part A (Backtest Builder) vs Part B (Nurse Comparison) */}
-      <div className="flex border-b border-[#D5D9DF] gap-2">
+      <div className="flex border-b border-[#DFCBB3] gap-2">
         <button
           type="button"
           onClick={() => setActiveTab('backtest')}
           className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
             activeTab === 'backtest'
-              ? 'border-blue-700 text-blue-700 bg-blue-50/50'
-              : 'border-transparent text-[#4A4F57] hover:text-[#1A1A1A] hover:bg-gray-50'
+              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
+              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
           }`}
         >
           <Calendar className="w-4 h-4" />
@@ -427,8 +427,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
           onClick={() => setActiveTab('nurse')}
           className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
             activeTab === 'nurse'
-              ? 'border-blue-700 text-blue-700 bg-blue-50/50'
-              : 'border-transparent text-[#4A4F57] hover:text-[#1A1A1A] hover:bg-gray-50'
+              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
+              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
           }`}
         >
           <UserCheck className="w-4 h-4" />
@@ -442,25 +442,25 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
       {activeTab === 'backtest' && (
         <div className="space-y-6">
           {/* Section A1: Past Data Retrieval */}
-          <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-4">
+          <section className="dw-panel p-5 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
-                <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-blue-700" />
+                <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-[#244C3B]" />
                   <span>A1. Past Data Retrieval (Open-Meteo Hindcast)</span>
                 </h3>
-                <p className="text-xs text-[#4A4F57] mt-0.5">
+                <p className="text-xs text-[#5A453A] mt-0.5">
                   Fetch historical weather & air-quality series for all 10 UAE cities with timezone Asia/Dubai.
                 </p>
               </div>
-              <span className="text-[11px] font-semibold bg-gray-100 text-gray-800 px-2 py-0.5 rounded border border-gray-300">
+              <span className="text-[11px] font-semibold bg-[#F3EADD] text-[#2D221C] px-2 py-0.5 rounded border border-[#DFCBB3]">
                 Max 92 Days
               </span>
             </div>
 
             <div className="flex flex-wrap items-end gap-3 pt-2">
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-[#1A1A1A] block">
+                <label className="text-xs font-semibold text-[#2D221C] block">
                   Past Days (N):
                 </label>
                 <input
@@ -469,7 +469,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   max={92}
                   value={pastDaysN}
                   onChange={(e) => setPastDaysN(Math.min(92, Math.max(1, parseInt(e.target.value, 10) || 1)))}
-                  className="w-32 px-3 py-1.5 border border-[#D5D9DF] rounded text-sm font-mono focus:outline-blue-600"
+                  className="w-32 px-3 py-1.5 border border-[#DFCBB3] rounded text-sm font-mono focus:outline-[#244C3B]"
                 />
               </div>
 
@@ -477,7 +477,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 type="button"
                 onClick={handleBuildPastPredictions}
                 disabled={isFetchingData}
-                className="px-4 py-2 bg-blue-600 text-white rounded text-xs sm:text-sm font-bold hover:bg-blue-700 disabled:opacity-50 min-h-[40px] flex items-center gap-2"
+                className="px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-bold hover:bg-[#244C3B] disabled:opacity-50 min-h-[40px] flex items-center gap-2"
               >
                 <Play className="w-4 h-4" />
                 <span>{isFetchingData ? 'Fetching Data...' : 'Build past predictions'}</span>
@@ -487,7 +487,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 type="button"
                 onClick={handleGenerateSyntheticBacktest}
                 disabled={isFetchingData}
-                className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#4A4F57] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px]"
+                className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px]"
               >
                 Generate Synthetic Series
               </button>
@@ -495,8 +495,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
             {/* Progress / Status display */}
             {fetchProgressMsg && (
-              <div className="p-3 bg-gray-50 border border-gray-200 rounded text-xs font-mono text-[#1A1A1A] flex items-center gap-2">
-                <Info className="w-4 h-4 text-blue-600 shrink-0" />
+              <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded text-xs font-mono text-[#2D221C] flex items-center gap-2">
+                <Info className="w-4 h-4 text-[#244C3B] shrink-0" />
                 <span>{fetchProgressMsg}</span>
               </div>
             )}
@@ -538,9 +538,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
           </section>
 
           {/* Section A2 & A3: Observed Events Log & Search Filter */}
-          <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-4">
-            <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-              <FileSpreadsheet className="w-4 h-4 text-blue-700" />
+          <section className="dw-panel p-5 space-y-4">
+            <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+              <FileSpreadsheet className="w-4 h-4 text-[#244C3B]" />
               <span>A3. Observed Events Log & Search Boundaries</span>
             </h3>
 
@@ -551,9 +551,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
             </div>
 
             {/* Search Period and Cities Configuration */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-gray-50 border border-gray-200 rounded">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-[#F7F1E8] border border-[#DFCBB3] rounded">
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-[#1A1A1A] block">
+                <label className="text-xs font-semibold text-[#2D221C] block">
                   Searched Period Start (ISO / Local):
                 </label>
                 <input
@@ -561,12 +561,12 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   value={searchedStartDate}
                   onChange={(e) => setSearchedStartDate(e.target.value)}
                   placeholder="YYYY-MM-DDTHH:00"
-                  className="w-full px-2.5 py-1.5 text-xs font-mono border border-[#D5D9DF] rounded focus:outline-blue-600"
+                  className="w-full px-2.5 py-1.5 text-xs font-mono border border-[#DFCBB3] rounded focus:outline-[#244C3B]"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-[#1A1A1A] block">
+                <label className="text-xs font-semibold text-[#2D221C] block">
                   Searched Period End (ISO / Local):
                 </label>
                 <input
@@ -574,24 +574,24 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   value={searchedEndDate}
                   onChange={(e) => setSearchedEndDate(e.target.value)}
                   placeholder="YYYY-MM-DDTHH:00"
-                  className="w-full px-2.5 py-1.5 text-xs font-mono border border-[#D5D9DF] rounded focus:outline-blue-600"
+                  className="w-full px-2.5 py-1.5 text-xs font-mono border border-[#DFCBB3] rounded focus:outline-[#244C3B]"
                 />
               </div>
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-[#1A1A1A]">
+                  <label className="text-xs font-semibold text-[#2D221C]">
                     Searched Cities:
                   </label>
                   <button
                     type="button"
                     onClick={handleSelectAllCities}
-                    className="text-[11px] text-blue-700 hover:underline"
+                    className="text-[11px] text-[#244C3B] hover:underline"
                   >
                     Select All
                   </button>
                 </div>
-                <div className="flex flex-wrap gap-1 max-h-24 overflow-y-auto p-1.5 bg-white border border-[#D5D9DF] rounded">
+                <div className="flex flex-wrap gap-1 max-h-24 overflow-y-auto p-1.5 bg-[#FFFDF8] border border-[#DFCBB3] rounded">
                   {CITIES.map((c) => {
                     const isSelected = selectedCities.includes(c.name);
                     return (
@@ -601,8 +601,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                         onClick={() => handleToggleCity(c.name)}
                         className={`text-[11px] px-2 py-0.5 rounded border transition-colors ${
                           isSelected
-                            ? 'bg-blue-600 text-white border-blue-700 font-semibold'
-                            : 'bg-gray-100 text-[#4A4F57] border-gray-300 hover:bg-gray-200'
+                            ? 'bg-[#244C3B] text-white border-[#244C3B] font-semibold'
+                            : 'bg-[#F3EADD] text-[#5A453A] border-[#DFCBB3] hover:bg-gray-200'
                         }`}
                       >
                         {c.name}
@@ -618,7 +618,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               <div className="flex flex-wrap items-center gap-3">
                 <label
                   htmlFor={eventLogInputId}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded text-xs sm:text-sm font-semibold hover:bg-blue-700 cursor-pointer min-h-[40px]"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[40px]"
                 >
                   <Upload className="w-4 h-4" />
                   <span>Upload Event Log CSV</span>
@@ -634,16 +634,16 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 <button
                   type="button"
                   onClick={handleLoadSampleEvents}
-                  className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
+                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
                 >
-                  <Database className="w-4 h-4 text-gray-600" />
+                  <Database className="w-4 h-4 text-[#6B564B]" />
                   <span>Load Sample Event Log</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleDownloadEventTemplate}
-                  className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#4A4F57] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
+                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
                 >
                   <FileDown className="w-4 h-4" />
                   <span>Download Event Template CSV</span>
@@ -651,13 +651,13 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               </div>
 
               {/* Independence check toggle and warning */}
-              <div className="p-3 bg-gray-50 border border-[#D5D9DF] rounded space-y-2">
-                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#1A1A1A]">
+              <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded space-y-2">
+                <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[#2D221C]">
                   <input
                     type="checkbox"
                     checked={includeNonIndependentEvents}
                     onChange={(e) => handleToggleIncludeNonIndependent(e.target.checked)}
-                    className="w-4 h-4 text-blue-600 rounded"
+                    className="w-4 h-4 text-[#244C3B] rounded"
                   />
                   <span>Include non-independent events in evaluation (default: excluded)</span>
                 </label>
@@ -700,26 +700,26 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
           </section>
 
           {/* Section A4: Chronological Split & Run Evaluation */}
-          <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-4">
-            <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-blue-700" />
+          <section className="dw-panel p-5 space-y-4">
+            <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-[#244C3B]" />
               <span>A4. Chronological Partitioning & Output Generation</span>
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-gray-50 border border-gray-200 rounded">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-[#F7F1E8] border border-[#DFCBB3] rounded">
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-[#1A1A1A] block">
+                <label className="text-xs font-semibold text-[#2D221C] block">
                   Optional Chronological Split Date:
                 </label>
                 <input
                   type="date"
                   value={splitDate}
                   onChange={(e) => setSplitDate(e.target.value)}
-                  className="w-full px-3 py-1.5 text-xs font-mono border border-[#D5D9DF] rounded focus:outline-blue-600"
+                  className="w-full px-3 py-1.5 text-xs font-mono border border-[#DFCBB3] rounded focus:outline-[#244C3B]"
                 />
               </div>
 
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-900 flex items-center">
+              <div className="p-3 bg-[#E8F0E7] border border-[#C5D9C5] rounded text-xs text-[#1B3A2D] flex items-center">
                 <p className="font-semibold">
                   Only change thresholds using the tuning period. Report the test period.
                 </p>
@@ -731,7 +731,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 type="button"
                 onClick={handleRunEvaluation}
                 disabled={isEvaluating || predictions.length === 0}
-                className="px-5 py-2.5 bg-blue-700 text-white rounded text-xs sm:text-sm font-bold hover:bg-blue-800 disabled:opacity-50 min-h-[44px] flex items-center gap-2 shadow-xs"
+                className="px-5 py-2.5 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-bold hover:bg-[#1B3A2D] disabled:opacity-50 min-h-[44px] flex items-center gap-2 shadow-xs"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 <span>{isEvaluating ? 'Evaluating...' : 'Run Backtest Evaluation'}</span>
@@ -742,16 +742,16 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <button
                     type="button"
                     onClick={handleDownloadEvaluationCsv}
-                    className="px-3.5 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-semibold hover:bg-gray-50 min-h-[44px] flex items-center gap-1.5"
+                    className="px-3.5 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-semibold hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                   >
-                    <Download className="w-4 h-4 text-blue-600" />
+                    <Download className="w-4 h-4 text-[#244C3B]" />
                     <span>Download evaluation CSV</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={handleDownloadMetadataJson}
-                    className="px-3.5 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-semibold hover:bg-gray-50 min-h-[44px] flex items-center gap-1.5"
+                    className="px-3.5 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-semibold hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                   >
                     <FileText className="w-4 h-4 text-purple-600" />
                     <span>Download metadata JSON</span>
@@ -772,13 +772,13 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
           {/* Section A5: Event-Level Summary & False Alarm Episodes */}
           {evaluationOutput && (
-            <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-6">
+            <section className="dw-panel p-5 space-y-6">
               <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-                  <Eye className="w-4 h-4 text-blue-700" />
+                <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+                  <Eye className="w-4 h-4 text-[#244C3B]" />
                   <span>A5. Event-Level Detection & False Alarm Episodes</span>
                 </h3>
-                <span className="text-xs font-mono font-semibold bg-blue-50 text-blue-900 border border-blue-200 px-2 py-0.5 rounded">
+                <span className="text-xs font-mono font-semibold bg-[#E8F0E7] text-[#1B3A2D] border border-[#C5D9C5] px-2 py-0.5 rounded">
                   Event Level: &ge; {APP_CONFIG.eventPredictionLevel}
                 </span>
               </div>
@@ -793,15 +793,15 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
               {/* Event-Level Table */}
               <div className="space-y-2">
-                <h4 className="text-xs font-bold text-[#1A1A1A]">
+                <h4 className="text-xs font-bold text-[#2D221C]">
                   Observed Events Detection Summary
                 </h4>
                 {evaluationOutput.eventSummaries.length === 0 ? (
-                  <p className="text-xs text-[#4A4F57] italic">No observed events loaded in active evaluation.</p>
+                  <p className="text-xs text-[#5A453A] italic">No observed events loaded in active evaluation.</p>
                 ) : (
-                  <div className="overflow-x-auto border border-[#D5D9DF] rounded">
+                  <div className="overflow-x-auto border border-[#DFCBB3] rounded">
                     <table className="w-full text-xs text-left">
-                      <thead className="bg-gray-50 border-b border-[#D5D9DF] text-[#4A4F57]">
+                      <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#5A453A]">
                         <tr>
                           <th className="py-2 px-3">City</th>
                           <th className="py-2 px-3">Event Window</th>
@@ -814,14 +814,14 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                       </thead>
                       <tbody>
                         {evaluationOutput.eventSummaries.map((summary, idx) => (
-                          <tr key={idx} className="border-b border-[#D5D9DF] hover:bg-gray-50">
+                          <tr key={idx} className="border-b border-[#DFCBB3] hover:bg-[#F7F1E8]">
                             <td className="py-2 px-3 font-semibold">{summary.event.city}</td>
                             <td className="py-2 px-3 font-mono text-[11px]">
                               {summary.event.start} &rarr; {summary.event.end}
                             </td>
                             <td className="py-2 px-3 text-[11px]">
                               <div>{summary.event.source_name}</div>
-                              <span className="text-[10px] text-gray-500 font-mono">
+                              <span className="text-[10px] text-[#6B564B] font-mono">
                                 ({summary.event.evidence_type})
                               </span>
                             </td>
@@ -868,12 +868,12 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               </div>
 
               {/* False Alarm Episodes */}
-              <div className="space-y-2 pt-2 border-t border-[#D5D9DF]">
+              <div className="space-y-2 pt-2 border-t border-[#DFCBB3]">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h4 className="text-xs font-bold text-[#1A1A1A]">
+                  <h4 className="text-xs font-bold text-[#2D221C]">
                     False Alarm Episodes ({evaluationOutput.falseAlarmEpisodes.length})
                   </h4>
-                  <span className="text-[11px] text-[#4A4F57] italic">
+                  <span className="text-[11px] text-[#5A453A] italic">
                     Tolerance window: &plusmn;{APP_CONFIG.matchToleranceHours}h ({APP_CONFIG.matchToleranceNotice})
                   </span>
                 </div>
@@ -883,9 +883,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                     No false alarm episodes identified inside the searched period.
                   </p>
                 ) : (
-                  <div className="overflow-x-auto border border-[#D5D9DF] rounded">
+                  <div className="overflow-x-auto border border-[#DFCBB3] rounded">
                     <table className="w-full text-xs text-left">
-                      <thead className="bg-gray-50 border-b border-[#D5D9DF] text-[#4A4F57]">
+                      <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#5A453A]">
                         <tr>
                           <th className="py-2 px-3">City</th>
                           <th className="py-2 px-3">Episode Window</th>
@@ -896,7 +896,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                       </thead>
                       <tbody>
                         {evaluationOutput.falseAlarmEpisodes.map((ep, idx) => (
-                          <tr key={idx} className="border-b border-[#D5D9DF] hover:bg-gray-50">
+                          <tr key={idx} className="border-b border-[#DFCBB3] hover:bg-[#F7F1E8]">
                             <td className="py-2 px-3 font-semibold">{ep.city}</td>
                             <td className="py-2 px-3 font-mono text-[11px]">
                               {ep.startHour} &rarr; {ep.endHour}
@@ -914,28 +914,28 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
               {/* Split Stats (if enabled) */}
               {evaluationOutput.splitStats && (
-                <div className="space-y-3 pt-2 border-t border-[#D5D9DF]">
-                  <h4 className="text-xs font-bold text-[#1A1A1A] flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-blue-700" />
+                <div className="space-y-3 pt-2 border-t border-[#DFCBB3]">
+                  <h4 className="text-xs font-bold text-[#2D221C] flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4 text-[#244C3B]" />
                     <span>Chronological Split Comparison (Split Date: {evaluationOutput.splitStats.splitDate})</span>
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Tuning Period */}
-                    <div className="p-3 bg-gray-50 border border-gray-200 rounded space-y-2">
+                    <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs text-[#1A1A1A]">Tuning Period (Before Split)</span>
-                        <span className="text-[10px] text-gray-600 font-mono">
+                        <span className="font-bold text-xs text-[#2D221C]">Tuning Period (Before Split)</span>
+                        <span className="text-[10px] text-[#6B564B] font-mono">
                           {evaluationOutput.splitStats.tuningPeriod.rowsCount} hours
                         </span>
                       </div>
-                      <p className="text-[11px] text-[#4A4F57] italic">
+                      <p className="text-[11px] text-[#5A453A] italic">
                         Only change thresholds using the tuning period.
                       </p>
                       <div className="text-xs space-y-1 font-mono pt-1">
                         <div>Hits: {evaluationOutput.splitStats.tuningPeriod.predictors.baselineRuleScore.hits}</div>
                         <div>Misses: {evaluationOutput.splitStats.tuningPeriod.predictors.baselineRuleScore.misses}</div>
                         <div>False Alarms: {evaluationOutput.splitStats.tuningPeriod.predictors.baselineRuleScore.falseAlarms}</div>
-                        <div className="font-bold text-blue-700">
+                        <div className="font-bold text-[#244C3B]">
                           Hit Rate: {evaluationOutput.splitStats.tuningPeriod.predictors.baselineRuleScore.hitRate !== null
                             ? `${(evaluationOutput.splitStats.tuningPeriod.predictors.baselineRuleScore.hitRate * 100).toFixed(1)}%`
                             : 'n/a'}
@@ -944,21 +944,21 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                     </div>
 
                     {/* Test Period */}
-                    <div className="p-3 bg-blue-50/50 border border-blue-200 rounded space-y-2">
+                    <div className="p-3 bg-[#E8F0E7] border border-[#C5D9C5] rounded space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs text-blue-950">Test Period (On / After Split)</span>
-                        <span className="text-[10px] text-blue-900 font-mono">
+                        <span className="font-bold text-xs text-[#1B3A2D]">Test Period (On / After Split)</span>
+                        <span className="text-[10px] text-[#1B3A2D] font-mono">
                           {evaluationOutput.splitStats.testPeriod.rowsCount} hours
                         </span>
                       </div>
-                      <p className="text-[11px] text-blue-900 font-semibold">
+                      <p className="text-[11px] text-[#1B3A2D] font-semibold">
                         Report the test period.
                       </p>
-                      <div className="text-xs space-y-1 font-mono pt-1 text-[#1A1A1A]">
+                      <div className="text-xs space-y-1 font-mono pt-1 text-[#2D221C]">
                         <div>Hits: {evaluationOutput.splitStats.testPeriod.predictors.baselineRuleScore.hits}</div>
                         <div>Misses: {evaluationOutput.splitStats.testPeriod.predictors.baselineRuleScore.misses}</div>
                         <div>False Alarms: {evaluationOutput.splitStats.testPeriod.predictors.baselineRuleScore.falseAlarms}</div>
-                        <div className="font-bold text-blue-700">
+                        <div className="font-bold text-[#244C3B]">
                           Hit Rate: {evaluationOutput.splitStats.testPeriod.predictors.baselineRuleScore.hitRate !== null
                             ? `${(evaluationOutput.splitStats.testPeriod.predictors.baselineRuleScore.hitRate * 100).toFixed(1)}%`
                             : 'n/a'}
@@ -978,14 +978,14 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
       {/* ========================================================================= */}
       {activeTab === 'nurse' && (
         <div className="space-y-6">
-          <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-4">
+          <section className="dw-panel p-5 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div>
-                <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-                  <UserCheck className="w-4 h-4 text-blue-700" />
+                <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+                  <UserCheck className="w-4 h-4 text-[#244C3B]" />
                   <span>Part B: School Nurse Agreement Evaluation</span>
                 </h3>
-                <p className="text-xs text-[#4A4F57] mt-0.5">
+                <p className="text-xs text-[#5A453A] mt-0.5">
                   Evaluate real historical school outdoor activity decisions against DustWatch policy calculations.
                 </p>
               </div>
@@ -1028,15 +1028,15 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
               return (
                 <div className="space-y-4 pt-2">
-                  <div className="flex flex-wrap items-center gap-4 p-3 bg-gray-50 border border-gray-200 rounded text-xs">
+                  <div className="flex flex-wrap items-center gap-4 p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded text-xs">
                     <div className="space-y-1">
-                      <label className="font-semibold text-[#1A1A1A] block">
+                      <label className="font-semibold text-[#2D221C] block">
                         School Location City:
                       </label>
                       <select
                         value={nurseSchoolCityId}
                         onChange={(e) => setNurseSchoolCityId(e.target.value)}
-                        className="px-2.5 py-1.5 border border-[#D5D9DF] rounded bg-white text-xs font-semibold focus:outline-blue-600"
+                        className="px-2.5 py-1.5 border border-[#DFCBB3] rounded bg-[#FFFDF8] text-xs font-semibold focus:outline-[#244C3B]"
                       >
                         {CITIES.map((c) => (
                           <option key={c.id} value={c.id}>
@@ -1047,8 +1047,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                     </div>
 
                     <div className="space-y-1">
-                      <span className="text-gray-500 block">Loaded Policy:</span>
-                      <span className="font-bold text-[#1A1A1A]">
+                      <span className="text-[#6B564B] block">Loaded Policy:</span>
+                      <span className="font-bold text-[#2D221C]">
                         {activePolicy?.schoolName} (v{activePolicy?.policyVersion})
                       </span>
                     </div>
@@ -1058,7 +1058,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <div className="flex flex-wrap items-center gap-3">
                   <label
                     htmlFor={nurseLogInputId}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded text-xs sm:text-sm font-semibold hover:bg-blue-700 cursor-pointer min-h-[40px]"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[40px]"
                   >
                     <Upload className="w-4 h-4" />
                     <span>Upload Nurse CSV</span>
@@ -1074,16 +1074,16 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <button
                     type="button"
                     onClick={handleLoadSampleNurseLog}
-                    className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
+                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
                   >
-                    <Database className="w-4 h-4 text-gray-600" />
+                    <Database className="w-4 h-4 text-[#6B564B]" />
                     <span>Load Sample Nurse Log</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={handleDownloadNurseTemplate}
-                    className="px-3 py-2 bg-white border border-[#D5D9DF] text-[#4A4F57] rounded text-xs font-medium hover:bg-gray-50 min-h-[40px] flex items-center gap-1.5"
+                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
                   >
                     <FileDown className="w-4 h-4" />
                     <span>Download Nurse CSV Template</span>
@@ -1102,9 +1102,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
 
           {/* Nurse Comparison Results Output */}
           {nurseComparisonSummary && (
-            <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-xs space-y-6">
+            <section className="dw-panel p-5 space-y-6">
               <div className="flex items-center justify-between flex-wrap gap-2">
-                <h3 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
+                <h3 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
                   <FileCheck className="w-4 h-4 text-emerald-600" />
                   <span>Nurse vs. DustWatch Agreement Breakdown</span>
                 </h3>
@@ -1116,7 +1116,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               </div>
 
               {/* Required Note B5 */}
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-950 font-semibold">
+              <div className="p-3 bg-[#E8F0E7] border border-[#C5D9C5] rounded text-xs text-[#1B3A2D] font-semibold">
                 {nurseComparisonSummary.note}
               </div>
 
@@ -1129,9 +1129,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   </span>
                 </div>
 
-                <div className="p-3 rounded bg-blue-50 border border-blue-200 text-center">
-                  <span className="text-blue-800 font-medium block">DustWatch More Cautious</span>
-                  <span className="text-xl font-bold font-mono text-blue-900">
+                <div className="p-3 rounded bg-[#E8F0E7] border border-[#C5D9C5] text-center">
+                  <span className="text-[#1B3A2D] font-medium block">DustWatch More Cautious</span>
+                  <span className="text-xl font-bold font-mono text-[#1B3A2D]">
                     {nurseComparisonSummary.dustwatchMoreCautiousCount}
                   </span>
                 </div>
@@ -1143,9 +1143,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   </span>
                 </div>
 
-                <div className="p-3 rounded bg-gray-50 border border-gray-200 text-center">
-                  <span className="text-gray-600 font-medium block">Not Evaluated</span>
-                  <span className="text-xl font-bold font-mono text-gray-800">
+                <div className="p-3 rounded bg-[#F7F1E8] border border-[#DFCBB3] text-center">
+                  <span className="text-[#6B564B] font-medium block">Not Evaluated</span>
+                  <span className="text-xl font-bold font-mono text-[#2D221C]">
                     {nurseComparisonSummary.notEvaluatedCount}
                   </span>
                 </div>
@@ -1168,7 +1168,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <p className="text-xs text-red-900">
                     These rows represent incidents where the school nurse took more restrictive protective action than DustWatch recommended. Examine the environmental readings below:
                   </p>
-                  <div className="overflow-x-auto border border-red-200 rounded bg-white">
+                  <div className="overflow-x-auto border border-red-200 rounded bg-[#FFFDF8]">
                     <table className="w-full text-xs text-left">
                       <thead className="bg-red-100/60 text-red-950 border-b border-red-200">
                         <tr>
@@ -1192,7 +1192,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                             <td className="py-2 px-3 text-center font-bold text-red-700 uppercase">
                               {r.nurse_action}
                             </td>
-                            <td className="py-2 px-3 text-center font-bold text-gray-800 uppercase">
+                            <td className="py-2 px-3 text-center font-bold text-[#2D221C] uppercase">
                               {r.dustwatch_action}
                             </td>
                             <td className="py-2 px-3 text-center font-mono text-[11px]">
@@ -1216,9 +1216,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               )}
 
               {/* Complete Rows Table with Filter */}
-              <div className="space-y-3 pt-2 border-t border-[#D5D9DF]">
+              <div className="space-y-3 pt-2 border-t border-[#DFCBB3]">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h4 className="text-xs font-bold text-[#1A1A1A]">
+                  <h4 className="text-xs font-bold text-[#2D221C]">
                     All Logged Rows ({nurseComparisonSummary.totalRows})
                   </h4>
 
@@ -1232,8 +1232,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                           onClick={() => setNurseFilter(filterKey)}
                           className={`px-2.5 py-1 rounded border text-[11px] transition-colors ${
                             nurseFilter === filterKey
-                              ? 'bg-blue-600 text-white border-blue-700 font-bold'
-                              : 'bg-white text-[#4A4F57] border-[#D5D9DF] hover:bg-gray-50'
+                              ? 'bg-[#244C3B] text-white border-[#244C3B] font-bold'
+                              : 'bg-[#FFFDF8] text-[#5A453A] border-[#DFCBB3] hover:bg-[#F7F1E8]'
                           }`}
                         >
                           {filterKey.replace('_', ' ')}
@@ -1243,9 +1243,9 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   </div>
                 </div>
 
-                <div className="overflow-x-auto border border-[#D5D9DF] rounded">
+                <div className="overflow-x-auto border border-[#DFCBB3] rounded">
                   <table className="w-full text-xs text-left">
-                    <thead className="bg-gray-50 border-b border-[#D5D9DF] text-[#4A4F57]">
+                    <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#5A453A]">
                       <tr>
                         <th className="py-2 px-3">Row</th>
                         <th className="py-2 px-3">Date / Hour</th>
@@ -1258,8 +1258,8 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                     </thead>
                     <tbody>
                       {filteredNurseRows.map((r) => (
-                        <tr key={r.rowNumber} className="border-b border-[#D5D9DF] hover:bg-gray-50">
-                          <td className="py-2 px-3 font-mono text-gray-500">{r.rowNumber}</td>
+                        <tr key={r.rowNumber} className="border-b border-[#DFCBB3] hover:bg-[#F7F1E8]">
+                          <td className="py-2 px-3 font-mono text-[#6B564B]">{r.rowNumber}</td>
                           <td className="py-2 px-3 font-mono font-semibold">
                             {r.date} {String(r.hour).padStart(2, '0')}:00
                           </td>
@@ -1274,7 +1274,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                                 Outside Available Data
                               </span>
                             ) : r.status === 'not_evaluated' ? (
-                              <span className="text-gray-700 bg-gray-100 border border-gray-300 px-2 py-0.5 rounded text-[11px]">
+                              <span className="text-[#2D221C] bg-[#F3EADD] border border-[#DFCBB3] px-2 py-0.5 rounded text-[11px]">
                                 Not Evaluated
                               </span>
                             ) : r.agreement_category === 'same_action' ? (
@@ -1282,7 +1282,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                                 Same Action
                               </span>
                             ) : r.agreement_category === 'dustwatch_more_cautious' ? (
-                              <span className="text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded text-[11px]">
+                              <span className="text-[#1B3A2D] bg-[#E8F0E7] border border-[#C5D9C5] px-2 py-0.5 rounded text-[11px]">
                                 DustWatch More Cautious
                               </span>
                             ) : (
@@ -1291,7 +1291,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                               </span>
                             )}
                           </td>
-                          <td className="py-2 px-3 text-[11px] text-[#4A4F57]">
+                          <td className="py-2 px-3 text-[11px] text-[#5A453A]">
                             {r.reason || r.triggeredRules?.join(', ') || '-'}
                           </td>
                         </tr>

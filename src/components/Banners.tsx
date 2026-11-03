@@ -24,7 +24,7 @@ export const Banners: React.FC<BannersProps> = ({ status }) => {
   let Icon = AlertTriangle;
 
   if (banner.type === 'sample' || banner.type === 'demo') {
-    bgClass = 'bg-blue-50 border-blue-300 text-blue-900';
+    bgClass = 'bg-[#E8F0E7] border-[#C5D9C5] text-[#1B3A2D]';
     Icon = Database;
   } else if (banner.type === 'cached') {
     bgClass = 'bg-amber-50 border-amber-300 text-amber-900';

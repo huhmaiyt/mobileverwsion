@@ -33,12 +33,12 @@ export const WhyThisRating: React.FC<WhyThisRatingProps> = ({
       case 'low':
         return <span className="text-[10px] bg-[#E8D2B4]/40 text-[#713F2B] font-semibold px-1.5 py-0.2 rounded border border-[#DFCBB3]">Low</span>;
       case 'missing':
-        return <span className="text-[10px] bg-gray-100 text-gray-700 font-semibold px-1.5 py-0.2 rounded border border-gray-300">Missing</span>;
+        return <span className="text-[10px] bg-[#F3EADD] text-[#2D221C] font-semibold px-1.5 py-0.2 rounded border border-[#DFCBB3]">Missing</span>;
     }
   };
 
   return (
-    <div className="bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-5 shadow-xs">
+    <div className="dw-panel p-5 shadow-xs">
       <div className="flex items-center justify-between mb-2">
         <h3 className="font-bold text-sm text-[#713F2B]">
           {STRINGS.whyThisRating.title}

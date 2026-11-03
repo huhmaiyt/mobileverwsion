@@ -46,7 +46,7 @@ export const AdvicePanel: React.FC<AdvicePanelProps> = ({ outlook }) => {
   ];
 
   return (
-    <div className="bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-4 sm:p-5 shadow-xs">
+    <div className="dw-panel p-4 sm:p-5 shadow-xs">
       {/* Highest estimated risk header */}
       <div className="mb-3 pb-3 border-b border-[#DFCBB3]/60">
         <div className="flex items-center justify-between flex-wrap gap-2">

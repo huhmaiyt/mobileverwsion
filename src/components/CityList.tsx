@@ -21,7 +21,7 @@ export const CityList: React.FC<CityListProps> = ({
   viewMode,
 }) => {
   return (
-    <div className="bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-4 shadow-xs">
+    <div className="dw-panel p-4 shadow-xs">
       <div className="flex items-center justify-between mb-3 px-1">
         <h3 className="text-sm font-bold text-[#713F2B]">
           UAE Municipalities (10 Stations)
@@ -58,7 +58,7 @@ export const CityList: React.FC<CityListProps> = ({
               className={`w-full text-left px-3.5 py-2.5 rounded-lg flex items-center justify-between transition-all duration-150 min-h-[44px] cursor-pointer active:scale-[0.99] ${
                 isSelected
                   ? 'bg-[#E8D2B4]/60 border-2 border-[#E8874A] shadow-2xs font-semibold text-[#713F2B]'
-                  : 'bg-white border border-[#DFCBB3] hover:bg-[#FFF8F0] hover:border-[#E8874A]/60 hover:shadow-2xs'
+                  : 'bg-[#FFFDF8] border border-[#DFCBB3] hover:bg-[#FFF8F0] hover:border-[#E8874A]/60 hover:shadow-2xs'
               }`}
             >
               <div className="flex items-center gap-2 min-w-0">

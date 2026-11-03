@@ -40,7 +40,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({
   };
 
   return (
-    <div className="bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl p-4 sm:p-5 shadow-xs">
+    <div className="dw-panel p-4 sm:p-5 shadow-xs">
       {/* Header with Table / Chart toggle */}
       <div className="flex items-center justify-between mb-3">
         <div>
@@ -68,7 +68,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({
             {viewMode === 'chart' && (
               <motion.span
                 layoutId={shouldReduceMotion ? undefined : 'timelineViewModePill'}
-                className="absolute inset-0 bg-white rounded shadow-2xs -z-0"
+                className="absolute inset-0 bg-[#FFFDF8] rounded shadow-2xs -z-0"
                 transition={{ type: 'spring', stiffness: 500, damping: 38 }}
               />
             )}
@@ -88,7 +88,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({
             {viewMode === 'table' && (
               <motion.span
                 layoutId={shouldReduceMotion ? undefined : 'timelineViewModePill'}
-                className="absolute inset-0 bg-white rounded shadow-2xs -z-0"
+                className="absolute inset-0 bg-[#FFFDF8] rounded shadow-2xs -z-0"
                 transition={{ type: 'spring', stiffness: 500, damping: 38 }}
               />
             )}
