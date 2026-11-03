@@ -8,8 +8,6 @@ import {
   AlertCircle,
   CheckCircle,
   Cpu,
-  Download,
-  FileCode,
   FileDown,
   FileUp,
   Play,
@@ -17,7 +15,6 @@ import {
   ShieldAlert,
   Sliders,
   Terminal,
-  Upload,
 } from 'lucide-react';
 import { APP_CONFIG, CITIES } from '../config.ts';
 import { STRINGS } from '../strings.ts';
@@ -40,7 +37,7 @@ import {
   scoreToCategory,
   validateModelConfig,
 } from '../riskEngine.ts';
-import { SchoolPolicyConfig, WorkbenchEvaluationOutput } from '../types.ts';
+import { SchoolPolicyConfig } from '../types.ts';
 
 interface TestViewProps {
   outlooks: Record<string, CityOutlook>;
@@ -51,7 +48,6 @@ interface TestViewProps {
   activeModel: ModelFileConfig | null;
   onSetActiveModel: (model: ModelFileConfig | null) => void;
   schoolPolicy?: SchoolPolicyConfig | null;
-  onSendToAccuracyChecker?: (output: WorkbenchEvaluationOutput) => void;
 }
 
 interface SelfCheckResult {
@@ -71,7 +67,6 @@ export const TestView: React.FC<TestViewProps> = ({
   activeModel,
   onSetActiveModel,
   schoolPolicy = null,
-  onSendToAccuracyChecker = () => {},
 }) => {
   const currentOutlook = outlooks[selectedCityId] || outlooks[APP_CONFIG.defaultSelectedCityId];
   const currentRaw = rawCityData[selectedCityId] || rawCityData[APP_CONFIG.defaultSelectedCityId];

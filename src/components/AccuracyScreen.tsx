@@ -22,7 +22,7 @@ import {
   getCsvTemplate,
   parseAndEvaluateCsv,
 } from '../evaluation.ts';
-import { EvaluationPredictorStats, WorkbenchEvaluationOutput } from '../types.ts';
+import { EvaluationPredictorStats } from '../types.ts';
 import {
   OutlineDrawCard,
   OutlineDrawHeading,
@@ -30,40 +30,10 @@ import {
   OutlineDrawVisual,
 } from './OutlineDrawCard.tsx';
 
-interface AccuracyScreenProps {
-  workbenchData?: WorkbenchEvaluationOutput | null;
-}
-
-export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData }) => {
+export const AccuracyScreen: React.FC = () => {
   const [csvEvaluation, setCsvEvaluation] = useState<CsvEvaluationResult | null>(null);
   const [csvError, setCsvError] = useState<string | null>(null);
   const [copiedJson, setCopiedJson] = useState<boolean>(false);
-
-  // Automatically load when workbenchData is passed
-  React.useEffect(() => {
-    if (workbenchData) {
-      setCsvError(null);
-      const res = parseAndEvaluateCsv(workbenchData.csvText, {
-        hindcastLabel: workbenchData.metadata.hindcastLabel,
-        searchedPeriod: workbenchData.metadata.searchedPeriod,
-        searchedCities: workbenchData.metadata.searchedCities,
-        thresholdsUsed: {
-          thresholds: APP_CONFIG.thresholds,
-          cutoffs: APP_CONFIG.cutoffs,
-          eventPredictionLevel: APP_CONFIG.eventPredictionLevel,
-          matchToleranceHours: APP_CONFIG.matchToleranceHours,
-        },
-        splitInfo: workbenchData.splitStats,
-        isSynthetic: workbenchData.isSynthetic ?? workbenchData.metadata.isSynthetic,
-      });
-
-      if (res.success && res.result) {
-        setCsvEvaluation(res.result);
-      } else {
-        setCsvError(res.error || 'Failed to load workbench data.');
-      }
-    }
-  }, [workbenchData]);
 
   // File upload handler
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -405,92 +375,25 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
               </div>
             )}
 
-            {/* A6: Provenance Display when results are from Workbench */}
-            {csvEvaluation.workbenchMetadata && (
-              <div className="p-4 bg-[#E8F0E7] border border-[#C5D9C5] rounded-lg space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs bg-[#E8F0E7] text-[#1B3A2D] border border-[#C5D9C5] px-2 py-0.5 rounded font-bold uppercase tracking-wide">
-                    Evaluation Workbench Run
-                  </span>
-                  <span className="text-xs text-[#1B3A2D] font-semibold">
-                    {csvEvaluation.workbenchMetadata.hindcastLabel}
-                  </span>
-                </div>
-
-                {csvEvaluation.workbenchMetadata.isSynthetic && (
-                  <div className="p-3 bg-amber-100 border border-amber-400 rounded text-xs text-amber-950 flex items-start gap-2 font-semibold">
-                    <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                    <div>
+            {/* Dataset provenance: shown when the uploaded CSV declares itself synthetic or carries a provenance label */}
+            {csvEvaluation.workbenchMetadata &&
+              (csvEvaluation.workbenchMetadata.isSynthetic || csvEvaluation.workbenchMetadata.hindcastLabel) && (
+                <div className="p-4 bg-[#E8F0E7] border border-[#C5D9C5] rounded-lg space-y-3">
+                  {csvEvaluation.workbenchMetadata.hindcastLabel && (
+                    <p className="text-xs text-[#1B3A2D] font-semibold">
+                      Dataset: {csvEvaluation.workbenchMetadata.hindcastLabel}
+                    </p>
+                  )}
+                  {csvEvaluation.workbenchMetadata.isSynthetic && (
+                    <div className="p-3 bg-amber-100 border border-amber-400 rounded text-xs text-amber-950 flex items-start gap-2 font-semibold">
+                      <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                       <span>
                         Notice: This dataset was generated from synthetic demonstration data. Real-world accuracy claims cannot be substantiated using synthetic data.
                       </span>
                     </div>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1B3A2D] pt-1">
-                  <div>
-                    <strong>Searched Period: </strong>
-                    <span className="font-mono">
-                      {csvEvaluation.workbenchMetadata.searchedPeriod.start} &rarr; {csvEvaluation.workbenchMetadata.searchedPeriod.end}
-                    </span>
-                  </div>
-                  <div>
-                    <strong>Searched Cities: </strong>
-                    <span>{csvEvaluation.workbenchMetadata.searchedCities.join(', ')}</span>
-                  </div>
+                  )}
                 </div>
-
-                {/* Thresholds used */}
-                <div className="pt-2 border-t border-[#C5D9C5] text-xs text-[#1B3A2D] space-y-1">
-                  <strong>Thresholds &amp; Cutoffs Tested:</strong>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 font-mono text-[11px] pt-1">
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Dust: 20-300 (30%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">PM10: 50-400 (25%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Gusts: 25-70 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Wind: 15-50 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">AOD: 0.2-1.5 (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Vis: 10k-1k (10%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5]">Humidity: 60-15% (5%)</span>
-                    <span className="bg-white/80 p-1 rounded border border-[#C5D9C5] font-bold">Event: &ge; {APP_CONFIG.eventPredictionLevel}</span>
-                  </div>
-                </div>
-
-                {/* Chronological Split Display */}
-                {csvEvaluation.workbenchMetadata.splitInfo && (
-                  <div className="pt-2 border-t border-[#C5D9C5] text-xs text-[#1B3A2D] space-y-2">
-                    <div className="flex items-center justify-between">
-                      <strong>Chronological Partition Split (Date: {csvEvaluation.workbenchMetadata.splitInfo.splitDate})</strong>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <div className="p-2 bg-[#FFFDF8] rounded border border-[#C5D9C5] space-y-1">
-                        <span className="font-bold text-[#2D221C] block">Tuning Period</span>
-                        <p className="text-[11px] text-[#6B564B] italic">Only change thresholds using the tuning period.</p>
-                        <div className="font-mono text-[11px] pt-1">
-                          Hits: {csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.hits} |
-                          Misses: {csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.misses} |
-                          FAR: {csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.falseAlarmRatio !== null
-                            ? `${(csvEvaluation.workbenchMetadata.splitInfo.tuningPeriod.predictors.baselineRuleScore.falseAlarmRatio * 100).toFixed(1)}%`
-                            : 'n/a'}
-                        </div>
-                      </div>
-
-                      <div className="p-2 bg-[#FFFDF8] rounded border border-[#C5D9C5] space-y-1">
-                        <span className="font-bold text-[#1B3A2D] block">Test Period</span>
-                        <p className="text-[11px] text-[#1B3A2D] font-semibold">Report the test period.</p>
-                        <div className="font-mono text-[11px] pt-1">
-                          Hits: {csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.hits} |
-                          Misses: {csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.misses} |
-                          FAR: {csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.falseAlarmRatio !== null
-                            ? `${(csvEvaluation.workbenchMetadata.splitInfo.testPeriod.predictors.baselineRuleScore.falseAlarmRatio * 100).toFixed(1)}%`
-                            : 'n/a'}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
+              )}
 
             {/* Results Table */}
             <div className="overflow-x-auto border border-[#DFCBB3] rounded-md">

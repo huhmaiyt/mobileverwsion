@@ -22,7 +22,7 @@ export const APP_CONFIG = {
   appName: 'DustWatch',
   timezone: 'Asia/Dubai',
   defaultSelectedCityId: 'abu-dhabi',
-  showTestViewLink: true,
+  showTestViewLink: false,
   geminiModelName: 'gemini-3.8-flash',
   
   // Data refresh timings (ms)

@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { APP_CONFIG } from './config.ts';
-import { CityOutlook, ModelFileConfig, RawCityData, SchoolPolicyConfig, WorkbenchEvaluationOutput } from './types.ts';
+import { CityOutlook, ModelFileConfig, RawCityData, SchoolPolicyConfig } from './types.ts';
 import { DEFAULT_UNCONFIGURED_POLICY, validateSchoolPolicy } from './schoolPolicy.ts';
 import { DataFetchStatus, getCityOutlooks } from './dataService.ts';
 import { Navbar } from './components/Navbar.tsx';
@@ -53,7 +53,6 @@ export default function App() {
   });
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const [activeModel, setActiveModel] = useState<ModelFileConfig | null>(null);
-  const [workbenchAccuracyData, setWorkbenchAccuracyData] = useState<WorkbenchEvaluationOutput | null>(null);
   const [schoolPolicy, setSchoolPolicy] = useState<SchoolPolicyConfig>(() => {
     try {
       const saved = localStorage.getItem('dustwatch_school_policy');
@@ -63,11 +62,6 @@ export default function App() {
     }
     return DEFAULT_UNCONFIGURED_POLICY;
   });
-
-  const handleSendToAccuracyChecker = useCallback((output: WorkbenchEvaluationOutput) => {
-    setWorkbenchAccuracyData(output);
-    setActiveScreen('accuracy');
-  }, []);
 
   // Save selected city safely
   const handleSelectCity = useCallback((cityId: string) => {
@@ -205,10 +199,11 @@ export default function App() {
             {activeScreen === 'how-it-works' && <HowItWorksScreen />}
 
             {activeScreen === 'accuracy' && (
-              <AccuracyScreen workbenchData={workbenchAccuracyData} />
+              <AccuracyScreen />
             )}
 
-            {activeScreen === 'test-view' && (
+            {/* Internal diagnostics: not a public destination unless showTestViewLink is enabled in config */}
+            {APP_CONFIG.showTestViewLink && activeScreen === 'test-view' && (
               <TestView
                 outlooks={outlooks}
                 rawCityData={rawCityData}
@@ -218,7 +213,6 @@ export default function App() {
                 activeModel={activeModel}
                 onSetActiveModel={setActiveModel}
                 schoolPolicy={schoolPolicy}
-                onSendToAccuracyChecker={handleSendToAccuracyChecker}
               />
             )}
           </motion.div>
