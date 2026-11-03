@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="bg-[#FFFDFB]/95 backdrop-blur-xs border-b border-[#DFCBB3] sticky top-0 z-40 transition-colors">
+    <header className="lg:hidden bg-[#FFFDFB]/95 backdrop-blur-xs border-b border-[#DFCBB3] sticky top-0 z-40 transition-colors">
       {/* UAE Sunset Atmospheric Horizon Line */}
       <div className="h-1 bg-gradient-to-r from-[#E8874A] via-[#D57639] to-[#713F2B]" />
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 lg:gap-8">

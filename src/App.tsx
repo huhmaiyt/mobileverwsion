@@ -10,6 +10,8 @@ import { CityOutlook, ModelFileConfig, RawCityData, SchoolPolicyConfig, Workbenc
 import { DEFAULT_UNCONFIGURED_POLICY, validateSchoolPolicy } from './schoolPolicy.ts';
 import { DataFetchStatus, getCityOutlooks } from './dataService.ts';
 import { Navbar } from './components/Navbar.tsx';
+import { Sidebar } from './components/Sidebar.tsx';
+import { PageHeader } from './components/PageHeader.tsx';
 import { Banners } from './components/Banners.tsx';
 import { DisclaimerBar } from './components/DisclaimerBar.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -128,8 +130,12 @@ export default function App() {
     'Updating...';
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F1E8] text-[#2D221C]">
-      {/* Top Navigation */}
+    <div className="min-h-screen flex flex-col text-[#2D221C]">
+      {/* Compact sidebar (large screens) */}
+      <Sidebar activeScreen={activeScreen} onSelectScreen={setActiveScreen} />
+
+      <div className="flex-1 flex flex-col lg:pl-[84px]">
+      {/* Top Navigation (mobile and tablet) */}
       <Navbar
         activeScreen={activeScreen}
         onSelectScreen={setActiveScreen}
@@ -138,6 +144,12 @@ export default function App() {
         onRefresh={() => loadData(true)}
         isRefreshing={isRefreshing}
         lastUpdated={lastUpdatedFormatted}
+      />
+
+      <PageHeader
+        activeScreen={activeScreen}
+        isDemoMode={isDemoMode}
+        onToggleDemoMode={handleToggleDemoMode}
       />
 
       {/* Prominent Banners for data status */}
@@ -218,6 +230,8 @@ export default function App() {
         onSelectScreen={setActiveScreen}
         activeScreen={activeScreen}
       />
+
+      </div>
 
       {/* Fixed bottom disclaimer bar (present on every screen) */}
       <DisclaimerBar />
