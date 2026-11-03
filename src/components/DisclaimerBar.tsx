@@ -20,7 +20,7 @@ export const DisclaimerBar: React.FC = () => {
           href={STRINGS.disclaimer.ncmUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 text-[#D5A45F] hover:text-[#E8C28A] underline focus-visible:ring-2 focus-visible:ring-[#D5A45F] rounded px-1.5 py-1 text-[11px] sm:text-xs font-semibold inline-flex items-center min-h-[32px]"
+          className="shrink-0 text-[#D5A45F] hover:text-[#E8C28A] underline focus-visible:ring-2 focus-visible:ring-[#D5A45F] rounded px-1.5 py-1 text-[11px] sm:text-xs font-semibold inline-flex items-center min-h-[44px]"
         >
           {STRINGS.disclaimer.ncmLinkLabel} &rarr;
         </a>

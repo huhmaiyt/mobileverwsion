@@ -365,28 +365,28 @@ export const TestView: React.FC<TestViewProps> = ({
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#2D221C]">
               {STRINGS.testView.title}
             </h1>
             <span className="bg-red-100 text-red-800 border border-red-300 rounded px-2 py-0.5 text-xs font-bold uppercase">
               For testing only
             </span>
           </div>
-          <p className="text-xs text-[#4A4F57] mt-1">
+          <p className="text-xs text-[#5A453A] mt-1">
             {STRINGS.testView.subtitle}
           </p>
         </div>
 
         {/* City Switcher for test inspection */}
         <div className="flex items-center gap-2">
-          <label htmlFor="test-city-select" className="text-xs font-semibold text-[#1A1A1A]">
+          <label htmlFor="test-city-select" className="text-xs font-semibold text-[#2D221C]">
             Selected City:
           </label>
           <select
             id="test-city-select"
             value={selectedCityId}
             onChange={(e) => onSelectCity(e.target.value)}
-            className="border border-[#D5D9DF] rounded px-3 py-1.5 text-xs font-medium bg-white"
+            className="border border-[#DFCBB3] rounded px-3 py-1.5 text-xs font-medium bg-[#FFFDF8]"
           >
             {CITIES.map((c) => (
               <option key={c.id} value={c.id}>
@@ -398,14 +398,14 @@ export const TestView: React.FC<TestViewProps> = ({
       </div>
 
       {/* Main Tabs: Workbench (Team Only) vs Diagnostics */}
-      <div className="flex border-b border-[#D5D9DF] gap-2">
+      <div className="flex border-b border-[#DFCBB3] gap-2">
         <button
           type="button"
           onClick={() => setActiveMainTab('workbench')}
           className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
             activeMainTab === 'workbench'
-              ? 'border-blue-700 text-blue-700 bg-blue-50/50'
-              : 'border-transparent text-[#4A4F57] hover:text-[#1A1A1A] hover:bg-gray-50'
+              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
+              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
           }`}
         >
           <Layers className="w-4 h-4" />
@@ -417,8 +417,8 @@ export const TestView: React.FC<TestViewProps> = ({
           onClick={() => setActiveMainTab('diagnostics')}
           className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
             activeMainTab === 'diagnostics'
-              ? 'border-blue-700 text-blue-700 bg-blue-50/50'
-              : 'border-transparent text-[#4A4F57] hover:text-[#1A1A1A] hover:bg-gray-50'
+              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
+              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
           }`}
         >
           <Sliders className="w-4 h-4" />
@@ -439,16 +439,16 @@ export const TestView: React.FC<TestViewProps> = ({
       {activeMainTab === 'diagnostics' && (
         <div className="space-y-8">
           {/* 1. Simulation Controls */}
-          <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
+          <section className="dw-panel p-5 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-            <Sliders className="w-4 h-4 text-blue-700" />
+          <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+            <Sliders className="w-4 h-4 text-[#244C3B]" />
             <span>{STRINGS.testView.simulationTitle}</span>
           </h2>
           <button
             type="button"
             onClick={resetAllSimulations}
-            className="inline-flex items-center gap-1.5 text-xs text-gray-700 hover:text-black border border-gray-300 px-2.5 py-1 rounded hover:bg-gray-50"
+            className="inline-flex items-center gap-1.5 text-xs text-[#2D221C] hover:text-[#2D221C] border border-[#DFCBB3] px-2.5 py-1 rounded hover:bg-[#F7F1E8]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>{STRINGS.testView.resetSimulations}</span>
@@ -462,7 +462,7 @@ export const TestView: React.FC<TestViewProps> = ({
             className={`p-3 rounded-lg border text-left text-xs transition-colors min-h-[44px] cursor-pointer ${
               simApiFail
                 ? 'bg-red-50 border-red-300 text-red-900 font-semibold'
-                : 'bg-gray-50 border-[#D5D9DF] text-[#1A1A1A] hover:bg-gray-100'
+                : 'bg-[#F7F1E8] border-[#DFCBB3] text-[#2D221C] hover:bg-[#F3EADD]'
             }`}
           >
             <div className="font-bold mb-1">{STRINGS.testView.simApiFail}</div>
@@ -477,7 +477,7 @@ export const TestView: React.FC<TestViewProps> = ({
             className={`p-3 rounded-lg border text-left text-xs transition-colors min-h-[44px] cursor-pointer ${
               simMissingDust
                 ? 'bg-amber-50 border-amber-300 text-amber-900 font-semibold'
-                : 'bg-gray-50 border-[#D5D9DF] text-[#1A1A1A] hover:bg-gray-100'
+                : 'bg-[#F7F1E8] border-[#DFCBB3] text-[#2D221C] hover:bg-[#F3EADD]'
             }`}
           >
             <div className="font-bold mb-1">{STRINGS.testView.simMissingDust}</div>
@@ -492,7 +492,7 @@ export const TestView: React.FC<TestViewProps> = ({
             className={`p-3 rounded-lg border text-left text-xs transition-colors min-h-[44px] cursor-pointer ${
               simOldData
                 ? 'bg-purple-50 border-purple-300 text-purple-900 font-semibold'
-                : 'bg-gray-50 border-[#D5D9DF] text-[#1A1A1A] hover:bg-gray-100'
+                : 'bg-[#F7F1E8] border-[#DFCBB3] text-[#2D221C] hover:bg-[#F3EADD]'
             }`}
           >
             <div className="font-bold mb-1">{STRINGS.testView.simOldData}</div>
@@ -504,9 +504,9 @@ export const TestView: React.FC<TestViewProps> = ({
       </section>
 
       {/* 2. Snapshots & Model File Loader */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-purple-700" />
+      <section className="dw-panel p-5 space-y-4">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <Terminal className="w-4 h-4 text-[#244C3B]" />
           <span>{STRINGS.testView.snapshotTitle}</span>
         </h2>
 
@@ -515,15 +515,15 @@ export const TestView: React.FC<TestViewProps> = ({
           <button
             type="button"
             onClick={handleSaveSnapshot}
-            className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded-md text-xs font-semibold hover:bg-gray-50 min-h-[44px]"
+            className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded-md text-xs font-semibold hover:bg-[#F7F1E8] min-h-[44px]"
           >
-            <FileDown className="w-4 h-4 text-blue-600" />
+            <FileDown className="w-4 h-4 text-[#244C3B]" />
             <span>{STRINGS.testView.saveSnapshot}</span>
           </button>
 
           {/* Load snapshot */}
-          <label className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded-md text-xs font-semibold hover:bg-gray-50 cursor-pointer min-h-[44px]">
-            <FileUp className="w-4 h-4 text-purple-600" />
+          <label className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded-md text-xs font-semibold hover:bg-[#F7F1E8] cursor-pointer min-h-[44px]">
+            <FileUp className="w-4 h-4 text-[#244C3B]" />
             <span>{STRINGS.testView.loadSnapshot}</span>
             <input
               type="file"
@@ -534,7 +534,7 @@ export const TestView: React.FC<TestViewProps> = ({
           </label>
 
           {/* Load Model File */}
-          <label className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-[#D5D9DF] text-[#1A1A1A] rounded-md text-xs font-semibold hover:bg-gray-50 cursor-pointer min-h-[44px]">
+          <label className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded-md text-xs font-semibold hover:bg-[#F7F1E8] cursor-pointer min-h-[44px]">
             <Cpu className="w-4 h-4 text-emerald-600" />
             <span>{STRINGS.testView.loadModelFile}</span>
             <input
@@ -560,7 +560,7 @@ export const TestView: React.FC<TestViewProps> = ({
         </div>
 
         {snapshotMsg && (
-          <div className="p-2.5 bg-gray-50 border border-gray-200 rounded text-xs text-[#1A1A1A]">
+          <div className="p-2.5 bg-[#F7F1E8] border border-[#DFCBB3] rounded text-xs text-[#2D221C]">
             {snapshotMsg}
           </div>
         )}
@@ -584,54 +584,54 @@ export const TestView: React.FC<TestViewProps> = ({
       </section>
 
       {/* 2b. Gemini AI Service Status & Error Telemetry */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-3">
-        <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-blue-700" />
+      <section className="dw-panel p-5 space-y-3">
+        <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
+          <Terminal className="w-4 h-4 text-[#244C3B]" />
           <span>Gemini AI Service Telemetry & Diagnostics</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="p-3 bg-gray-50 border border-gray-200 rounded">
-            <span className="text-[#4A4F57] block font-medium">Model & Status</span>
-            <span className="font-bold text-sm text-[#1A1A1A] block mt-0.5">
+          <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded">
+            <span className="text-[#5A453A] block font-medium">Model & Status</span>
+            <span className="font-bold text-sm text-[#2D221C] block mt-0.5">
               {geminiHealth?.model || APP_CONFIG.geminiModelName}
             </span>
-            <span className="text-[11px] text-gray-600">
+            <span className="text-[11px] text-[#6B564B]">
               {geminiHealth?.aiEnabled ? 'Configured (Active)' : 'Fallback Only'}
             </span>
           </div>
 
-          <div className="p-3 bg-gray-50 border border-gray-200 rounded">
-            <span className="text-[#4A4F57] block font-medium">Last Gemini Error Code</span>
+          <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded">
+            <span className="text-[#5A453A] block font-medium">Last Gemini Error Code</span>
             <span className="font-bold text-sm text-red-700 block mt-0.5 font-mono">
               {geminiHealth?.lastGeminiError ? String(geminiHealth.lastGeminiError.code) : 'None'}
             </span>
-            <span className="text-[11px] text-gray-500">
+            <span className="text-[11px] text-[#6B564B]">
               {geminiHealth?.lastGeminiError ? 'Error reported on server' : 'Zero active errors'}
             </span>
           </div>
 
-          <div className="p-3 bg-gray-50 border border-gray-200 rounded">
-            <span className="text-[#4A4F57] block font-medium">Last Error Timestamp</span>
-            <span className="font-bold text-xs text-[#1A1A1A] block mt-0.5 font-mono">
+          <div className="p-3 bg-[#F7F1E8] border border-[#DFCBB3] rounded">
+            <span className="text-[#5A453A] block font-medium">Last Error Timestamp</span>
+            <span className="font-bold text-xs text-[#2D221C] block mt-0.5 font-mono">
               {geminiHealth?.lastGeminiError ? geminiHealth.lastGeminiError.time : 'No errors recorded'}
             </span>
-            <span className="text-[11px] text-gray-500">ISO server time</span>
+            <span className="text-[11px] text-[#6B564B]">ISO server time</span>
           </div>
         </div>
-        <p className="text-[11px] text-gray-500 italic">
+        <p className="text-[11px] text-[#6B564B] italic">
           Credentials security: Server-side Gemini API keys and secrets are never transmitted to or displayed in the client interface.
         </p>
       </section>
 
       {/* 3. Automated Diagnostic Self-Checks */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
+      <section className="dw-panel p-5 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div>
-            <h2 className="text-base font-bold text-[#1A1A1A] flex items-center gap-2">
+            <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
               <ShieldAlert className="w-4 h-4 text-emerald-700" />
               <span>{STRINGS.testView.selfChecksTitle}</span>
             </h2>
-            <p className="text-xs text-[#4A4F57] mt-0.5">
+            <p className="text-xs text-[#5A453A] mt-0.5">
               Runs 6 fixed synthetic test cases defined in project specifications.
             </p>
           </div>
@@ -639,7 +639,7 @@ export const TestView: React.FC<TestViewProps> = ({
           <button
             type="button"
             onClick={runSelfChecks}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md text-xs sm:text-sm font-semibold hover:bg-blue-700 min-h-[44px]"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded-md text-xs sm:text-sm font-semibold hover:bg-[#244C3B] min-h-[44px]"
           >
             <Play className="w-4 h-4" />
             <span>{STRINGS.testView.runChecks}</span>
@@ -647,7 +647,7 @@ export const TestView: React.FC<TestViewProps> = ({
         </div>
 
         {selfCheckResults && (
-          <div className="space-y-2 pt-2 border-t border-[#D5D9DF]">
+          <div className="space-y-2 pt-2 border-t border-[#DFCBB3]">
             {selfCheckResults.map((check) => (
               <div
                 key={check.id}
@@ -672,7 +672,7 @@ export const TestView: React.FC<TestViewProps> = ({
                       {check.passed ? 'PASS' : 'FAIL'}
                     </span>
                   </div>
-                  <p className="text-[#4A4F57]">{check.description}</p>
+                  <p className="text-[#5A453A]">{check.description}</p>
                   <p className="font-mono text-[11px] opacity-80 pt-0.5">{check.details}</p>
                 </div>
 
@@ -688,27 +688,27 @@ export const TestView: React.FC<TestViewProps> = ({
       </section>
 
       {/* 4. Selected City Diagnostics Table & Exact URLs */}
-      <section className="bg-white border border-[#D5D9DF] rounded-lg p-5 shadow-sm space-y-4">
+      <section className="dw-panel p-5 space-y-4">
         <div>
-          <h2 className="text-base font-bold text-[#1A1A1A]">
+          <h2 className="text-base font-bold text-[#2D221C]">
             {STRINGS.testView.diagnosticsTitle}: {currentOutlook.city.name}
           </h2>
-          <div className="text-xs text-[#4A4F57] mt-1 space-y-1">
+          <div className="text-xs text-[#5A453A] mt-1 space-y-1">
             <p>
               <strong>Data Source Type: </strong>
               <span className="font-mono font-bold uppercase">{currentOutlook.dataSourceType}</span> |{' '}
               <strong>Fetch Timestamp: </strong>
               <span>{currentOutlook.fetchTime}</span>
             </p>
-            <p className="break-all font-mono text-[11px] text-gray-600">
+            <p className="break-all font-mono text-[11px] text-[#6B564B]">
               <strong>Air Quality URL: </strong>
-              <a href={airQualityUrl} target="_blank" rel="noopener noreferrer" className="underline text-blue-600">
+              <a href={airQualityUrl} target="_blank" rel="noopener noreferrer" className="underline text-[#244C3B]">
                 {airQualityUrl}
               </a>
             </p>
-            <p className="break-all font-mono text-[11px] text-gray-600">
+            <p className="break-all font-mono text-[11px] text-[#6B564B]">
               <strong>Weather URL: </strong>
-              <a href={weatherUrl} target="_blank" rel="noopener noreferrer" className="underline text-blue-600">
+              <a href={weatherUrl} target="_blank" rel="noopener noreferrer" className="underline text-[#244C3B]">
                 {weatherUrl}
               </a>
             </p>
@@ -716,9 +716,9 @@ export const TestView: React.FC<TestViewProps> = ({
         </div>
 
         {/* 12-hour hourly breakdown table */}
-        <div className="overflow-x-auto border border-[#D5D9DF] rounded-md">
+        <div className="overflow-x-auto border border-[#DFCBB3] rounded-md">
           <table className="w-full text-[11px] text-left">
-            <thead className="bg-gray-100 border-b border-[#D5D9DF] text-[#1A1A1A] font-semibold">
+            <thead className="bg-[#F3EADD] border-b border-[#DFCBB3] text-[#2D221C] font-semibold">
               <tr>
                 <th className="py-2 px-2.5">Hour</th>
                 <th className="py-2 px-2">Dust (µg/m³)</th>
@@ -729,19 +729,19 @@ export const TestView: React.FC<TestViewProps> = ({
                 <th className="py-2 px-2">Visibility (m)</th>
                 <th className="py-2 px-2">Humidity (%)</th>
                 <th className="py-2 px-2">Baseline</th>
-                {activeModel && <th className="py-2 px-2 text-purple-700">Model</th>}
+                {activeModel && <th className="py-2 px-2 text-[#244C3B]">Model</th>}
                 <th className="py-2 px-2 font-bold">Final Risk</th>
                 <th className="py-2 px-2">Missing Flags</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#D5D9DF]">
+            <tbody className="divide-y divide-[#DFCBB3]">
               {currentOutlook.hourlyResults.map((h) => {
                 const isDustMissing = h.subScores.dust?.rawValue === null;
                 const isPm10Missing = h.subScores.pm10?.rawValue === null;
 
                 return (
-                  <tr key={h.hourIndex} className="hover:bg-gray-50">
-                    <td className="py-2 px-2.5 font-bold font-mono text-[#1A1A1A]">{h.displayHour}</td>
+                  <tr key={h.hourIndex} className="hover:bg-[#F7F1E8]">
+                    <td className="py-2 px-2.5 font-bold font-mono text-[#2D221C]">{h.displayHour}</td>
                     <td className={`py-2 px-2 font-mono ${isDustMissing ? 'text-red-600 font-bold bg-red-50' : ''}`}>
                       {h.subScores.dust?.rawValue ?? 'NULL'}
                     </td>
@@ -757,7 +757,7 @@ export const TestView: React.FC<TestViewProps> = ({
                       {Math.round(h.baselineScore)} ({h.baselineCategory})
                     </td>
                     {activeModel && (
-                      <td className="py-2 px-2 font-mono font-bold text-purple-700">
+                      <td className="py-2 px-2 font-mono font-bold text-[#244C3B]">
                         {h.modelScore !== undefined ? `${Math.round(h.modelScore)} (${h.modelCategory})` : 'n/a'}
                       </td>
                     )}

@@ -87,11 +87,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               variants={itemVariants}
               className="flex items-center gap-2 text-xs font-semibold tracking-wide text-[#713F2B] uppercase mb-4"
             >
-              <span className="text-[#E8874A] font-extrabold">{STRINGS.home.heroKicker}</span>
+              <span className="text-[#713F2B] font-extrabold">{STRINGS.home.heroKicker}</span>
               <span aria-hidden="true" className="text-[#E8874A]">·</span>
               <span className="text-[#713F2B] font-medium">{STRINGS.app.badge}</span>
               <span aria-hidden="true" className="text-[#E8874A]">·</span>
-              <span className="text-[#8C6D58]">Updated {lastUpdatedFormatted}</span>
+              <span className="text-[#6B564B]">Updated {lastUpdatedFormatted}</span>
             </motion.div>
 
             <motion.h1
@@ -145,7 +145,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 loading="eager"
               />
               <div className="mt-4 pt-3.5 border-t border-[#DFCBB3]/80 w-full">
-                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#E8874A] block">
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#713F2B] block">
                   Official Project Identity
                 </span>
                 <span className="text-xs text-[#5A453A] font-medium block mt-0.5">
@@ -183,7 +183,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               <div className="p-8 text-center flex flex-col items-center justify-center h-full text-[#713F2B]">
                 <Wind className="w-12 h-12 mb-3 text-[#E8874A]" />
                 <h3 className="font-bold text-lg text-[#3A1E13]">UAE Atmospheric Observation</h3>
-                <p className="text-xs text-[#8C6D58] max-w-sm mt-1">
+                <p className="text-xs text-[#6B564B] max-w-sm mt-1">
                   Continuous atmospheric analysis combining Open-Meteo forecasts and CAMS particulate models.
                 </p>
               </div>
@@ -195,7 +195,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-[#FFFDFB]">
             <div className="space-y-4">
               <OutlineDrawHeading>
-                <div className="flex items-center gap-2 text-xs font-bold text-[#E8874A] uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#713F2B] uppercase tracking-wider">
                   <Compass className="w-4 h-4 text-[#E8874A]" />
                   <span>Regional Atmospheric Context</span>
                 </div>
@@ -219,7 +219,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </OutlineDrawBody>
 
               <OutlineDrawVisual>
-                <div className="pt-2 text-xs text-[#8C6D58] space-y-1.5 border-t border-[#DFCBB3]">
+                <div className="pt-2 text-xs text-[#6B564B] space-y-1.5 border-t border-[#DFCBB3]">
                   <p className="font-semibold text-[#3A1E13]">Operational Pillars:</p>
                   <div className="grid grid-cols-2 gap-2">
                     <span className="flex items-center gap-1.5 text-[#5A453A]">
@@ -244,12 +244,12 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('map')}
-                  className="text-xs font-bold text-[#713F2B] hover:text-[#E8874A] flex items-center gap-1.5 cursor-pointer interactive-tap group"
+                  className="text-xs font-bold text-[#713F2B] hover:text-[#E8874A] flex items-center gap-1.5 cursor-pointer min-h-[44px] interactive-tap group"
                 >
                   <span>Launch Interactive Map View</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-[#E8874A]" />
                 </button>
-                <span className="text-[11px] text-[#8C6D58]">No login required</span>
+                <span className="text-[11px] text-[#6B564B]">No login required</span>
               </div>
             </OutlineDrawVisual>
           </div>
@@ -270,7 +270,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <button
             type="button"
             onClick={() => onSelectScreen('map')}
-            className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1 self-start sm:self-auto cursor-pointer group"
+            className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1 self-start sm:self-auto cursor-pointer group min-h-[44px]"
           >
             <span>Full UAE Interactive Map</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -292,7 +292,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 className="p-3.5 bg-[#FFFDFB] border border-[#DFCBB3] hover:border-[#E8874A] hover:bg-[#FFF8F0] rounded-lg text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs active:scale-[0.98] cursor-pointer group flex flex-col justify-between min-h-[104px]"
               >
                 <div>
-                  <div className="text-xs text-[#8C6D58] group-hover:text-[#713F2B] transition-colors">
+                  <div className="text-xs text-[#6B564B] group-hover:text-[#713F2B] transition-colors">
                     Emirate / City
                   </div>
                   <div className="font-bold text-sm text-[#2D1A12] truncate mt-0.5">
@@ -324,7 +324,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* Core Platform Capabilities: Bento-Style Grid */}
       <section className="space-y-6">
         <div>
-          <div className="text-xs font-bold text-[#E8874A] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <div className="text-xs font-bold text-[#713F2B] uppercase tracking-wider mb-1 flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#E8874A]" />
             <span>Platform Architecture</span>
           </div>
@@ -341,7 +341,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             borderRadius={12}
             duration={0.7}
             delay={0}
-            className="p-6 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
+            className="p-6 dw-panel flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
           >
             <div className="space-y-3">
               <OutlineDrawHeading>
@@ -365,7 +365,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('map')}
-                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer min-h-[44px]"
                 >
                   <span>View Map Layers & Rasters</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -405,7 +405,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('map')}
-                  className="text-xs font-bold text-[#713F2B] hover:text-[#E8874A] flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs font-bold text-[#713F2B] hover:text-[#E8874A] flex items-center gap-1.5 cursor-pointer min-h-[44px]"
                 >
                   <span>Explore Hourly Trajectories</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-[#E8874A]" />
@@ -421,7 +421,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             borderRadius={12}
             duration={0.7}
             delay={0.08}
-            className="p-6 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
+            className="p-6 dw-panel flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
           >
             <div className="space-y-3">
               <OutlineDrawHeading>
@@ -445,7 +445,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('school-mode')}
-                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer min-h-[44px]"
                 >
                   <span>{STRINGS.home.schoolModeCta}</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -461,7 +461,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             borderRadius={12}
             duration={0.7}
             delay={0.2}
-            className="p-6 bg-[#FFFDFB] border border-[#DFCBB3] rounded-xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
+            className="p-6 dw-panel flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs group"
           >
             <div className="space-y-3">
               <OutlineDrawHeading>
@@ -485,7 +485,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('how-it-works')}
-                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer"
+                  className="text-xs font-bold text-[#244C3B] hover:underline flex items-center gap-1.5 cursor-pointer min-h-[44px]"
                 >
                   <span>Read Full Methodology</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -493,7 +493,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectScreen('accuracy')}
-                  className="text-xs text-[#8C6D58] hover:text-[#3A1E13] cursor-pointer"
+                  className="text-xs text-[#6B564B] hover:text-[#3A1E13] cursor-pointer min-h-[44px] inline-flex items-center"
                 >
                   {STRINGS.home.accuracyCta}
                 </button>
@@ -533,13 +533,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   href={STRINGS.disclaimer.ncmUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-bold text-[#244C3B] hover:underline"
+                  className="inline-flex items-center gap-1.5 font-bold text-[#244C3B] hover:underline min-h-[44px]"
                 >
                   <span>National Center of Meteorology (ncm.ae)</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
-                <span className="text-[#8C6D58] hidden sm:inline">|</span>
-                <span className="text-[#8C6D58]">Data source: Open-Meteo & CAMS Atmospheric Models</span>
+                <span className="text-[#6B564B] hidden sm:inline">|</span>
+                <span className="text-[#6B564B]">Data source: Open-Meteo & CAMS Atmospheric Models</span>
               </div>
             </OutlineDrawVisual>
           </div>

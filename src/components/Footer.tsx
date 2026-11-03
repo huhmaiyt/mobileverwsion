@@ -14,7 +14,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) => {
   return (
-    <footer className="border-t border-[#DFCBB3] bg-[#F7F1E8] py-8 pb-24 px-4 mt-16 text-xs text-[#6B564B] relative">
+    <footer className="border-t border-[#C5D9C5] bg-[#E8F0E7]/70 py-8 pb-24 px-4 mt-16 text-xs text-[#6B564B] relative">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="flex items-center gap-3">
@@ -33,11 +33,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
                 loading="lazy"
               />
             </button>
-            <div className="border-l border-[#DFCBB3] pl-3">
+            <div className="border-l border-[#C5D9C5] pl-3">
               <span className="font-bold text-xs text-[#713F2B] block">
                 {STRINGS.app.badge}
               </span>
-              <span className="text-[11px] text-[#8C6D58] block">
+              <span className="text-[11px] text-[#6B564B] block">
                 UAE Regional Atmospheric Outlook
               </span>
             </div>
@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           <button
             type="button"
             onClick={() => onSelectScreen('home')}
-            className="hover:underline text-[#244C3B] font-semibold cursor-pointer"
+            className="hover:underline text-[#244C3B] font-semibold cursor-pointer inline-flex items-center min-h-[44px] px-1"
           >
             {STRINGS.nav.home}
           </button>
@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           <button
             type="button"
             onClick={() => onSelectScreen('map')}
-            className="hover:underline text-[#244C3B] font-semibold cursor-pointer"
+            className="hover:underline text-[#244C3B] font-semibold cursor-pointer inline-flex items-center min-h-[44px] px-1"
           >
             {STRINGS.nav.dashboard}
           </button>
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           <button
             type="button"
             onClick={() => onSelectScreen('school-mode')}
-            className="hover:underline text-[#244C3B] font-semibold cursor-pointer"
+            className="hover:underline text-[#244C3B] font-semibold cursor-pointer inline-flex items-center min-h-[44px] px-1"
           >
             {STRINGS.nav.schoolMode}
           </button>
@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           <button
             type="button"
             onClick={() => onSelectScreen('how-it-works')}
-            className="hover:underline text-[#244C3B] font-semibold cursor-pointer"
+            className="hover:underline text-[#244C3B] font-semibold cursor-pointer inline-flex items-center min-h-[44px] px-1"
           >
             {STRINGS.nav.howItWorks}
           </button>
@@ -83,7 +83,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
           <button
             type="button"
             onClick={() => onSelectScreen('accuracy')}
-            className="hover:underline text-[#244C3B] font-semibold cursor-pointer"
+            className="hover:underline text-[#244C3B] font-semibold cursor-pointer inline-flex items-center min-h-[44px] px-1"
           >
             {STRINGS.nav.accuracy}
           </button>
@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectScreen, activeScreen }) 
             <button
               type="button"
               onClick={() => onSelectScreen(activeScreen === 'test-view' ? 'home' : 'test-view')}
-              className="hover:underline text-[#5F6762] font-mono cursor-pointer ml-2 border-l border-[#CBD5CD] pl-4"
+              className="hover:underline text-[#5A453A] font-mono cursor-pointer inline-flex items-center min-h-[44px] ml-2 border-l border-[#C5D9C5] pl-4"
             >
               {activeScreen === 'test-view' ? 'Close Diagnostics' : 'Diagnostics & Test'}
             </button>

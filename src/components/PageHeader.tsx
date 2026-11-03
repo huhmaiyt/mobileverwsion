@@ -23,13 +23,16 @@ const TITLES: Partial<Record<ScreenId, { title: string; subtitle: string }>> = {
 /** Desktop page header (large screens only), shown above every dashboard screen. */
 export const PageHeader: React.FC<PageHeaderProps> = ({ activeScreen, isDemoMode, onToggleDemoMode }) => {
   const meta = TITLES[activeScreen];
-  if (!meta) return null;
 
   return (
     <div className="hidden lg:flex max-w-7xl w-full mx-auto px-4 pt-7 pb-4 items-end justify-between gap-6">
       <div>
-        <div className="text-2xl font-extrabold tracking-tight text-[#244C3B]">{meta.title}</div>
-        <p className="mt-0.5 text-sm text-[#5A453A]">{meta.subtitle}</p>
+        {meta && (
+          <>
+            <div className="text-2xl font-extrabold tracking-tight text-[#244C3B]">{meta.title}</div>
+            <p className="mt-0.5 text-sm text-[#5A453A]">{meta.subtitle}</p>
+          </>
+        )}
       </div>
 
       <div className="flex items-center gap-2.5 shrink-0">
@@ -39,7 +42,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ activeScreen, isDemoMode
           aria-checked={isDemoMode}
           aria-label={`Demonstration Mode is currently ${isDemoMode ? 'ON' : 'OFF'}. Click to switch.`}
           onClick={onToggleDemoMode}
-          className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer min-h-[40px] border interactive-tap ${
+          className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer min-h-[44px] border interactive-tap ${
             isDemoMode
               ? 'bg-[#FBEBDD] text-[#713F2B] border-[#E8874A] hover:bg-[#F5DDC9]'
               : 'bg-[#FFFDF8] text-[#5A453A] border-[#DFCBB3] hover:border-[#E8874A] hover:text-[#713F2B]'

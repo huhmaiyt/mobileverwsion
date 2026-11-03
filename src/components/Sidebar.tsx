@@ -29,7 +29,7 @@ const ITEMS: Array<{ id: ScreenId; label: string; Icon: React.ComponentType<{ cl
 export const Sidebar: React.FC<SidebarProps> = ({ activeScreen, onSelectScreen }) => {
   return (
     <aside
-      className="hidden lg:flex fixed inset-y-0 left-0 z-40 w-[84px] flex-col items-center bg-[#244C3B] py-5 shadow-[4px_0_24px_-12px_rgba(36,76,59,0.5)]"
+      className="dw-sidebar hidden lg:flex fixed inset-y-0 left-0 z-40 w-[84px] flex-col items-center bg-[#244C3B] py-5 shadow-[4px_0_24px_-12px_rgba(36,76,59,0.5)]"
       aria-label="DustWatch sidebar"
     >
       <button

@@ -1220,7 +1220,7 @@ export const SchoolModeScreen: React.FC<SchoolModeScreenProps> = ({
             href="https://mobile.ncm.gov.ae/maps-warnings?lang=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#244C3B] hover:text-[#1B3A2D] underline font-semibold flex items-center gap-1 shrink-0"
+            className="text-[#244C3B] hover:text-[#1B3A2D] underline font-semibold flex items-center gap-1 shrink-0 min-h-[44px]"
           >
             <span>NCM Warnings Portal</span>
             <ExternalLink className="w-3 h-3" />

@@ -75,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={item.id}
                 type="button"
                 onClick={() => handleNav(item.id)}
-                className={`relative px-3 py-1.5 rounded-md text-sm font-semibold whitespace-nowrap shrink-0 transition-colors cursor-pointer min-h-[40px] z-10 ${
+                className={`relative px-3 py-1.5 rounded-md text-sm font-semibold whitespace-nowrap shrink-0 transition-colors cursor-pointer min-h-[44px] z-10 ${
                   isActive
                     ? 'text-[#713F2B]'
                     : 'text-[#5A453A] hover:text-[#713F2B] hover:bg-[#E8D2B4]/30'
@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-checked={isDemoMode}
             aria-label={`Demonstration Mode is currently ${isDemoMode ? 'ON' : 'OFF'}. Click to switch.`}
             onClick={onToggleDemoMode}
-            className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer min-h-[40px] border interactive-tap ${
+            className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer min-h-[44px] border interactive-tap ${
               isDemoMode
                 ? 'bg-amber-100/90 text-amber-950 border-amber-400 shadow-2xs hover:bg-amber-200'
                 : 'bg-[#FFFDFB] text-[#5A453A] border-[#DFCBB3] hover:border-[#E8874A] hover:text-[#713F2B] hover:bg-[#F7F1E8]'
@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => handleNav('map')}
-            className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#244C3B] text-white rounded-lg text-xs font-semibold hover:bg-[#1B3A2D] active:scale-[0.98] transition-all whitespace-nowrap shrink-0 cursor-pointer min-h-[40px] shadow-2xs hover:shadow-xs"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#244C3B] text-white rounded-lg text-xs font-semibold hover:bg-[#1B3A2D] active:scale-[0.98] transition-all whitespace-nowrap shrink-0 cursor-pointer min-h-[44px] shadow-2xs hover:shadow-xs"
           >
             <span>Explore Dashboard</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -238,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       />
                       <div className="text-left">
                         <span className="block text-xs font-bold">Demonstration Mode</span>
-                        <span className="block text-[10px] text-[#8C6D58] font-normal">
+                        <span className="block text-[10px] text-[#6B564B] font-normal">
                           {isDemoMode ? 'Showing simulated UAE scenario' : 'Using official live data'}
                         </span>
                       </div>

@@ -477,7 +477,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 type="button"
                 onClick={handleBuildPastPredictions}
                 disabled={isFetchingData}
-                className="px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-bold hover:bg-[#244C3B] disabled:opacity-50 min-h-[40px] flex items-center gap-2"
+                className="px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-bold hover:bg-[#244C3B] disabled:opacity-50 min-h-[44px] flex items-center gap-2"
               >
                 <Play className="w-4 h-4" />
                 <span>{isFetchingData ? 'Fetching Data...' : 'Build past predictions'}</span>
@@ -487,7 +487,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 type="button"
                 onClick={handleGenerateSyntheticBacktest}
                 disabled={isFetchingData}
-                className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px]"
+                className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[44px]"
               >
                 Generate Synthetic Series
               </button>
@@ -618,7 +618,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
               <div className="flex flex-wrap items-center gap-3">
                 <label
                   htmlFor={eventLogInputId}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[40px]"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[44px]"
                 >
                   <Upload className="w-4 h-4" />
                   <span>Upload Event Log CSV</span>
@@ -634,7 +634,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 <button
                   type="button"
                   onClick={handleLoadSampleEvents}
-                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
+                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                 >
                   <Database className="w-4 h-4 text-[#6B564B]" />
                   <span>Load Sample Event Log</span>
@@ -643,7 +643,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                 <button
                   type="button"
                   onClick={handleDownloadEventTemplate}
-                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
+                  className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                 >
                   <FileDown className="w-4 h-4" />
                   <span>Download Event Template CSV</span>
@@ -1058,7 +1058,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <div className="flex flex-wrap items-center gap-3">
                   <label
                     htmlFor={nurseLogInputId}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[40px]"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[44px]"
                   >
                     <Upload className="w-4 h-4" />
                     <span>Upload Nurse CSV</span>
@@ -1074,7 +1074,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <button
                     type="button"
                     onClick={handleLoadSampleNurseLog}
-                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
+                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                   >
                     <Database className="w-4 h-4 text-[#6B564B]" />
                     <span>Load Sample Nurse Log</span>
@@ -1083,7 +1083,7 @@ export const EvaluationWorkbench: React.FC<EvaluationWorkbenchProps> = ({
                   <button
                     type="button"
                     onClick={handleDownloadNurseTemplate}
-                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[40px] flex items-center gap-1.5"
+                    className="px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#5A453A] rounded text-xs font-medium hover:bg-[#F7F1E8] min-h-[44px] flex items-center gap-1.5"
                   >
                     <FileDown className="w-4 h-4" />
                     <span>Download Nurse CSV Template</span>

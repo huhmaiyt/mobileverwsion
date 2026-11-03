@@ -56,7 +56,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({
           <button
             type="button"
             onClick={() => setViewMode('chart')}
-            className={`relative px-2.5 py-1 rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer z-10 ${
+            className={`relative px-3 py-1 rounded text-xs font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer z-10 min-h-[44px] min-w-[44px] ${
               viewMode === 'chart'
                 ? 'text-[#713F2B]'
                 : 'text-[#6B564B] hover:text-[#2D1A12]'
@@ -76,7 +76,7 @@ export const TimelineChart: React.FC<TimelineChartProps> = ({
           <button
             type="button"
             onClick={() => setViewMode('table')}
-            className={`relative px-2.5 py-1 rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer z-10 ${
+            className={`relative px-3 py-1 rounded text-xs font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer z-10 min-h-[44px] min-w-[44px] ${
               viewMode === 'table'
                 ? 'text-[#713F2B]'
                 : 'text-[#6B564B] hover:text-[#2D1A12]'

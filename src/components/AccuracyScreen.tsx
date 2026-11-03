@@ -137,7 +137,7 @@ export const AccuracyScreen: React.FC<AccuracyScreenProps> = ({ workbenchData })
     <div className="max-w-4xl mx-auto space-y-8 pb-8">
       {/* Page Header */}
       <div>
-        <div className="text-xs font-bold text-[#E8874A] uppercase tracking-wider mb-1">
+        <div className="text-xs font-bold text-[#713F2B] uppercase tracking-wider mb-1">
           Model Evaluation & Verification
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold text-[#713F2B]">

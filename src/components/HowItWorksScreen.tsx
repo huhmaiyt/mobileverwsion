@@ -33,7 +33,7 @@ export const HowItWorksScreen: React.FC = () => {
       {/* Page Header with Official Project Identity */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-2 border-b border-[#DFCBB3]">
         <div className="space-y-1">
-          <div className="text-xs font-bold text-[#E8874A] uppercase tracking-wider mb-1">
+          <div className="text-xs font-bold text-[#713F2B] uppercase tracking-wider mb-1">
             Methodology & Data Pipeline
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-[#713F2B]">
@@ -83,7 +83,7 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step1Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
+              <div className="hidden md:flex justify-end pt-2 text-[#6B564B]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -98,7 +98,7 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step2Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
+              <div className="hidden md:flex justify-end pt-2 text-[#6B564B]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -113,7 +113,7 @@ export const HowItWorksScreen: React.FC = () => {
                   {STRINGS.howItWorks.flow.step3Desc}
                 </p>
               </div>
-              <div className="hidden md:flex justify-end pt-2 text-[#8C6D58]">
+              <div className="hidden md:flex justify-end pt-2 text-[#6B564B]">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -339,7 +339,7 @@ export const HowItWorksScreen: React.FC = () => {
             href={STRINGS.disclaimer.ncmUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#244C3B] hover:text-[#1B3A2D] underline"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#244C3B] hover:text-[#1B3A2D] underline min-h-[44px]"
           >
             <span>Visit the UAE National Center of Meteorology (NCM)</span>
             <ExternalLink className="w-4 h-4" />

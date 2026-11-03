@@ -216,7 +216,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           </div>
           ${
             isSelected
-              ? `<div class="mt-1 bg-white text-[#1E2522] border border-[#CBD5CD] px-2.5 py-0.5 rounded-md shadow-xs text-xs font-bold whitespace-nowrap transition-all">
+              ? `<div class="mt-1 bg-[#FFFDF8] text-[#1E2522] border border-[#CBD5CD] px-2.5 py-0.5 rounded-md shadow-xs text-xs font-bold whitespace-nowrap transition-all">
                    ${city.name}: ${category}
                  </div>`
               : `<div class="mt-0.5 bg-[#1E2522]/90 text-white px-2 py-0.5 rounded text-[10px] font-medium hidden group-hover:block whitespace-nowrap shadow-xs">
@@ -422,7 +422,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           if (cell.status === 'ok' && cell.precipitationMm !== null) {
             if (cell.precipitationMm === 0.0) {
               badgeHtml = `
-                <div class="cursor-pointer flex items-center justify-center bg-white/95 text-slate-700 border border-slate-300 rounded px-1 py-0.5 shadow-xs text-[10px] font-mono hover:border-blue-500 hover:scale-110 transition-transform">
+                <div class="cursor-pointer flex items-center justify-center bg-[#FFFDF8]/95 text-[#5A453A] border border-[#DFCBB3] rounded px-1 py-0.5 shadow-xs text-[10px] font-mono hover:border-blue-500 hover:scale-110 transition-transform">
                   <span>0.0mm</span>
                 </div>
               `;
@@ -462,23 +462,23 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           const popupContent = `
             <div class="text-xs p-1">
-              <div class="font-bold text-gray-900">${cell.regionLabel || 'UAE NWP Station'}</div>
-              <div class="text-[10px] text-gray-500">${cell.lat.toFixed(2)}°N, ${cell.lon.toFixed(2)}°E</div>
+              <div class="font-bold text-[#2D221C]">${cell.regionLabel || 'UAE NWP Station'}</div>
+              <div class="text-[10px] text-[#6B564B]">${cell.lat.toFixed(2)}°N, ${cell.lon.toFixed(2)}°E</div>
               ${
                 isDemoMode
                   ? '<div class="mt-1 inline-block bg-amber-100 text-amber-900 border border-amber-300 font-bold px-1.5 py-0.5 rounded text-[10px]">DEMO — SIMULATED RAINFALL</div>'
                   : ''
               }
-              <div class="mt-1.5 pt-1 border-t border-gray-200">
-                <span class="font-semibold text-gray-700">Precipitation (${intervalMin}-min):</span>
-                <span class="font-mono font-bold ml-1 ${cell.precipitationMm && cell.precipitationMm > 0 ? 'text-blue-700' : 'text-gray-900'}">
+              <div class="mt-1.5 pt-1 border-t border-[#DFCBB3]">
+                <span class="font-semibold text-[#2D221C]">Precipitation (${intervalMin}-min):</span>
+                <span class="font-mono font-bold ml-1 ${cell.precipitationMm && cell.precipitationMm > 0 ? 'text-[#244C3B]' : 'text-[#2D221C]'}">
                   ${statusText}
                 </span>
               </div>
-              <div class="text-[10px] text-gray-500 mt-1">
+              <div class="text-[10px] text-[#6B564B] mt-1">
                 Forecast Interval: ${intervalMin} min model accumulation
               </div>
-              <div class="text-[10px] text-gray-400 mt-1 italic leading-tight">
+              <div class="text-[10px] text-[#6B564B] mt-1 italic leading-tight">
                 ${
                   isDemoMode
                     ? 'Deterministic simulation for system evaluation. Not real-time observation.'
@@ -730,7 +730,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setActiveOverlay('dust_risk')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'dust_risk'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#E8D2B4]/40 text-[#713F2B] border border-[#DFCBB3] hover:bg-[#E8D2B4]/80 font-bold'
@@ -743,7 +743,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setActiveOverlay('none')}
-            className={`px-3 py-2 rounded-lg font-semibold transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'none'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
@@ -755,7 +755,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setActiveOverlay('temperature')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'temperature'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
@@ -768,33 +768,33 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setActiveOverlay('rainfall')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'rainfall'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
             }`}
           >
-            <CloudRain className="w-3.5 h-3.5 text-sky-600" />
+            <CloudRain className="w-3.5 h-3.5 text-[#244C3B]" />
             <span>Rainfall</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveOverlay('air_quality')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'air_quality'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
             }`}
           >
-            <Wind className="w-3.5 h-3.5 text-purple-600" />
+            <Wind className="w-3.5 h-3.5 text-[#244C3B]" />
             <span>Air Quality</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveOverlay('aerosol')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'aerosol'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
@@ -807,7 +807,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setActiveOverlay('satellite_omps')}
-            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] text-xs ${
+            className={`px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] text-xs ${
               activeOverlay === 'satellite_omps'
                 ? 'bg-[#244C3B] text-white shadow-xs'
                 : 'bg-[#F7F1E8] text-[#5A453A] border border-[#DFCBB3] hover:bg-[#E8D2B4]/40 hover:text-[#713F2B]'
@@ -824,14 +824,14 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             type="button"
             onClick={handleResetToUae}
             title="Reset map view to UAE overview"
-            className="px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer bg-white border border-[#DFCBB3] text-[#713F2B] hover:bg-[#E8D2B4]/30 hover:text-[#244C3B] shadow-2xs min-h-[40px] text-xs"
+            className="px-3 py-2 rounded-lg font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-[0.98] cursor-pointer bg-[#FFFDF8] border border-[#DFCBB3] text-[#713F2B] hover:bg-[#E8D2B4]/30 hover:text-[#244C3B] shadow-2xs min-h-[44px] text-xs"
           >
             <Compass className="w-4 h-4 text-[#E8874A]" />
             <span>Reset to UAE</span>
           </button>
 
           {isLoadingOverlay && (
-            <span className="flex items-center gap-1 text-[11px] text-[#713F2B] font-semibold bg-[#E8D2B4]/40 px-2.5 py-1.5 rounded-lg border border-[#DFCBB3] min-h-[40px]">
+            <span className="flex items-center gap-1 text-[11px] text-[#713F2B] font-semibold bg-[#E8D2B4]/40 px-2.5 py-1.5 rounded-lg border border-[#DFCBB3] min-h-[44px]">
               <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#E8874A]" />
               <span className="hidden md:inline">
                 {activeOverlay === 'rainfall'
@@ -852,7 +852,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
         <div className="bg-amber-50/80 border-b border-amber-200 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-amber-950 text-[11px]">Continuous Dust Risk Surface:</span>
-            <span className="text-[11px] text-amber-900 bg-white border border-amber-200 px-2 py-0.5 rounded font-mono">
+            <span className="text-[11px] text-amber-900 bg-[#FFFDF8] border border-amber-200 px-2 py-0.5 rounded font-mono">
               {viewMode === 'highest12h' ? '12-Hour Peak Forecast' : 'Current Evaluated Risk'} •{' '}
               {(() => {
                 const reporting = CITIES.filter((c) => {
@@ -871,10 +871,10 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             <button
               type="button"
               onClick={() => setShowGridReadings((prev) => !prev)}
-              className={`px-3 py-1.5 rounded-md text-[11px] font-semibold cursor-pointer border transition-colors min-h-[36px] active:scale-[0.98] ${
+              className={`px-3 py-1.5 rounded-md text-[11px] font-semibold cursor-pointer border transition-colors min-h-[44px] active:scale-[0.98] ${
                 showGridReadings
                   ? 'bg-amber-700 text-white border-amber-700 shadow-xs'
-                  : 'bg-white text-amber-900 border-amber-300 hover:bg-amber-100'
+                  : 'bg-[#FFFDF8] text-amber-900 border-amber-300 hover:bg-amber-100'
               }`}
             >
               {showGridReadings ? 'Hide Station Readings (10)' : 'Show Station Readings (10)'}
@@ -885,8 +885,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
       {/* 1b. Air Quality Metric Sub-selector (When Air Quality Overlay is Active) */}
       {activeOverlay === 'air_quality' && (
-        <div className="bg-purple-50/70 border-b border-purple-200 px-3 py-1.5 flex flex-wrap items-center gap-2 text-xs">
-          <span className="font-semibold text-purple-950 text-[11px] shrink-0">
+        <div className="bg-[#E8F0E7] border-b border-[#C5D9C5] px-3 py-1.5 flex flex-wrap items-center gap-2 text-xs">
+          <span className="font-semibold text-[#1B3A2D] text-[11px] shrink-0">
             {isDemoMode ? 'DEMO — Simulated Air Quality Metric:' : 'Select Air Quality Metric:'}
           </span>
           {isDemoMode && (
@@ -894,12 +894,12 @@ export const UaeMap: React.FC<UaeMapProps> = ({
               DEMO DATA
             </span>
           )}
-          <div className="flex items-center rounded-lg p-0.5 bg-white border border-purple-200 gap-1 overflow-x-auto no-scrollbar max-w-full">
+          <div className="flex items-center rounded-lg p-0.5 bg-[#FFFDF8] border border-[#C5D9C5] gap-1 overflow-x-auto no-scrollbar max-w-full">
             <button
               type="button"
               onClick={() => setAqMetric('us_aqi')}
-              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[36px] ${
-                aqMetric === 'us_aqi' ? 'bg-purple-700 text-white shadow-xs' : 'text-purple-950 hover:bg-purple-100'
+              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[44px] ${
+                aqMetric === 'us_aqi' ? 'bg-[#244C3B] text-white shadow-xs' : 'text-[#1B3A2D] hover:bg-[#E8F0E7]'
               }`}
             >
               US EPA AQI (0–500)
@@ -907,8 +907,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             <button
               type="button"
               onClick={() => setAqMetric('pm10')}
-              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[36px] ${
-                aqMetric === 'pm10' ? 'bg-purple-700 text-white shadow-xs' : 'text-purple-950 hover:bg-purple-100'
+              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[44px] ${
+                aqMetric === 'pm10' ? 'bg-[#244C3B] text-white shadow-xs' : 'text-[#1B3A2D] hover:bg-[#E8F0E7]'
               }`}
             >
               PM10 (µg/m³)
@@ -916,8 +916,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             <button
               type="button"
               onClick={() => setAqMetric('pm2_5')}
-              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[36px] ${
-                aqMetric === 'pm2_5' ? 'bg-purple-700 text-white shadow-xs' : 'text-purple-950 hover:bg-purple-100'
+              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[44px] ${
+                aqMetric === 'pm2_5' ? 'bg-[#244C3B] text-white shadow-xs' : 'text-[#1B3A2D] hover:bg-[#E8F0E7]'
               }`}
             >
               PM2.5 (µg/m³)
@@ -925,8 +925,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             <button
               type="button"
               onClick={() => setAqMetric('european_aqi')}
-              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[36px] ${
-                aqMetric === 'european_aqi' ? 'bg-purple-700 text-white shadow-xs' : 'text-purple-950 hover:bg-purple-100'
+              className={`px-2.5 py-1.5 rounded text-[11px] font-semibold cursor-pointer whitespace-nowrap min-h-[44px] ${
+                aqMetric === 'european_aqi' ? 'bg-[#244C3B] text-white shadow-xs' : 'text-[#1B3A2D] hover:bg-[#E8F0E7]'
               }`}
             >
               European AQI (0–100)
@@ -937,13 +937,13 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
       {/* 1c. Rainfall Station Statistics & Toggle (When Rainfall Overlay is Active) */}
       {activeOverlay === 'rainfall' && (
-        <div className="bg-sky-50/80 border-b border-sky-200 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div className="bg-[#E8F0E7] border-b border-[#C5D9C5] px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-semibold text-sky-950 text-[11px]">
+            <span className="font-semibold text-[#1B3A2D] text-[11px]">
               {isDemoMode ? 'DEMO — Simulated NWP Precipitation:' : 'NWP Precipitation Observations:'}
             </span>
             {rainfallData && (
-              <span className="text-[11px] text-sky-900 bg-white border border-sky-200 px-2 py-0.5 rounded font-mono">
+              <span className="text-[11px] text-[#1B3A2D] bg-[#FFFDF8] border border-[#C5D9C5] px-2 py-0.5 rounded font-mono">
                 {rainfallData.cells.filter((c) => c.status === 'ok').length}/36 stations reporting •{' '}
                 {(() => {
                   const rainy = rainfallData.cells.filter((c) => c.status === 'ok' && c.precipitationMm !== null && c.precipitationMm > 0);
@@ -965,8 +965,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
               onClick={() => setShowGridReadings((prev) => !prev)}
               className={`px-2.5 py-1 rounded text-[11px] font-semibold cursor-pointer border transition-colors ${
                 showGridReadings
-                  ? 'bg-sky-700 text-white border-sky-700 shadow-xs'
-                  : 'bg-white text-sky-900 border-sky-300 hover:bg-sky-100'
+                  ? 'bg-[#244C3B] text-white border-[#244C3B] shadow-xs'
+                  : 'bg-[#FFFDF8] text-[#1B3A2D] border-[#C5D9C5] hover:bg-[#E8F0E7]'
               }`}
             >
               {showGridReadings ? 'Hide Station Readings (36)' : 'Show Station Readings (36)'}
@@ -998,14 +998,14 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
         {/* Live Hover Sample Badge (Bottom Left) */}
         {hoverSample && (
-          <div className="absolute bottom-3 left-3 z-[1000] bg-white/95 backdrop-blur-sm border border-[#D5D9DF] rounded-lg px-2.5 py-1.5 shadow-md text-xs pointer-events-none max-w-[200px] sm:max-w-none">
+          <div className="absolute bottom-3 left-3 z-[1000] bg-[#FFFDF8]/95 backdrop-blur-sm border border-[#DFCBB3] rounded-lg px-2.5 py-1.5 shadow-md text-xs pointer-events-none max-w-[200px] sm:max-w-none">
             <div className="text-[10px] text-[#4A4F57] uppercase tracking-wider font-semibold truncate">
               Sample ({hoverSample.lat.toFixed(2)}°N, {hoverSample.lon.toFixed(2)}°E)
             </div>
-            <div className="font-bold text-[#1A1A1A] mt-0.5 truncate">
-              {hoverSample.metricLabel}: <span className="text-blue-700">{hoverSample.valText}</span>
+            <div className="font-bold text-[#2D221C] mt-0.5 truncate">
+              {hoverSample.metricLabel}: <span className="text-[#244C3B]">{hoverSample.valText}</span>
             </div>
-            <div className="text-[11px] text-[#5F6368] truncate">
+            <div className="text-[11px] text-[#5A453A] truncate">
               Classification: {hoverSample.categoryText}
             </div>
           </div>
@@ -1016,7 +1016,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           <button
             type="button"
             onClick={() => setMobileLegendOpen(true)}
-            className="sm:hidden absolute top-3 right-3 z-[1000] bg-white/95 backdrop-blur-sm border border-[#D5D9DF] rounded-lg px-3 py-1.5 shadow-md text-xs font-bold text-[#713F2B] flex items-center gap-1.5 cursor-pointer interactive-tap min-h-[38px]"
+            className="sm:hidden absolute top-3 right-3 z-[1000] bg-[#FFFDF8]/95 backdrop-blur-sm border border-[#DFCBB3] rounded-lg px-3 py-1.5 shadow-md text-xs font-bold text-[#713F2B] flex items-center gap-1.5 cursor-pointer interactive-tap min-h-[44px]"
             aria-label="Open Map Legend"
           >
             <Layers className="w-3.5 h-3.5 text-[#E8874A]" />
@@ -1028,10 +1028,10 @@ export const UaeMap: React.FC<UaeMapProps> = ({
         <div
           className={`${
             mobileLegendOpen ? 'block' : 'hidden sm:block'
-          } absolute top-3 right-3 z-[1000] bg-white/95 backdrop-blur-sm border border-[#D5D9DF] rounded-xl p-3 shadow-md text-xs max-w-[240px] max-h-[340px] overflow-y-auto`}
+          } absolute top-3 right-3 z-[1000] bg-[#FFFDF8]/95 backdrop-blur-sm border border-[#DFCBB3] rounded-xl p-3 shadow-md text-xs max-w-[240px] max-h-[340px] overflow-y-auto`}
         >
           {/* Mobile Close Button header */}
-          <div className="flex sm:hidden items-center justify-between pb-2 mb-2 border-b border-gray-200">
+          <div className="flex sm:hidden items-center justify-between pb-2 mb-2 border-b border-[#DFCBB3]">
             <span className="font-bold text-[#713F2B] text-xs flex items-center gap-1">
               <Layers className="w-3.5 h-3.5 text-[#E8874A]" />
               <span>Map Legend</span>
@@ -1039,7 +1039,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             <button
               type="button"
               onClick={() => setMobileLegendOpen(false)}
-              className="p-1 text-gray-500 hover:text-black rounded min-h-[32px] min-w-[32px] flex items-center justify-center cursor-pointer"
+              className="p-1 text-[#6B564B] hover:text-[#2D221C] rounded min-h-[32px] min-w-[32px] flex items-center justify-center cursor-pointer"
               aria-label="Close Map Legend"
             >
               <X className="w-4 h-4" />
@@ -1047,8 +1047,8 @@ export const UaeMap: React.FC<UaeMapProps> = ({
           </div>
           {activeOverlay === 'dust_risk' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-0.5">Atmospheric Dust Risk</div>
-              <div className="text-[10px] text-[#5F6368] mb-1.5 font-medium">
+              <div className="font-bold text-[#2D221C] mb-0.5">Atmospheric Dust Risk</div>
+              <div className="text-[10px] text-[#5A453A] mb-1.5 font-medium">
                 {viewMode === 'highest12h' ? '12-Hour Peak Forecast Surface' : 'Current Continuous Surface'}
               </div>
               {Object.values(outlooks).length > 0 ? (
@@ -1076,7 +1076,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                       <span><strong>75–100:</strong> Very High (Red)</span>
                     </div>
                   </div>
-                  <div className="mt-2 pt-1.5 border-t border-gray-200 text-[10px] text-[#5F6368] leading-tight">
+                  <div className="mt-2 pt-1.5 border-t border-[#DFCBB3] text-[10px] text-[#5A453A] leading-tight">
                     Continuous surface resampled via IDW spatial interpolation from 10 municipal stations. Discrete stations do not constitute a native continuous sensor grid.
                   </div>
                 </>
@@ -1093,7 +1093,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'none' && (
             <div>
-              <div className="font-semibold text-[#1A1A1A] mb-1.5">City Risk Levels</div>
+              <div className="font-semibold text-[#2D221C] mb-1.5">City Risk Levels</div>
               <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                 <div className="flex items-center gap-1.5">
                   <span
@@ -1102,7 +1102,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   >
                     L
                   </span>
-                  <span className="text-[#1A1A1A]">Low</span>
+                  <span className="text-[#2D221C]">Low</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span
@@ -1111,7 +1111,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   >
                     M
                   </span>
-                  <span className="text-[#1A1A1A]">Moderate</span>
+                  <span className="text-[#2D221C]">Moderate</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span
@@ -1120,7 +1120,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   >
                     H
                   </span>
-                  <span className="text-[#1A1A1A]">High</span>
+                  <span className="text-[#2D221C]">High</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span
@@ -1129,7 +1129,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   >
                     VH
                   </span>
-                  <span className="text-[#1A1A1A]">Very High</span>
+                  <span className="text-[#2D221C]">Very High</span>
                 </div>
               </div>
             </div>
@@ -1137,7 +1137,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'temperature' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-1">Continuous Temperature (°C)</div>
+              <div className="font-bold text-[#2D221C] mb-1">Continuous Temperature (°C)</div>
               {/* Continuous Gradient Bar */}
               <div className="h-2.5 w-full rounded mb-1.5" style={{ background: 'linear-gradient(to right, #3b82f6, #06b6d4, #10b981, #f59e0b, #ea580c, #b91c1c)' }} />
               <div className="space-y-1 text-[11px]">
@@ -1171,10 +1171,10 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'rainfall' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-0.5">
+              <div className="font-bold text-[#2D221C] mb-0.5">
                 {isDemoMode ? 'DEMO — Simulated Rainfall' : 'Accumulated Rainfall (mm)'}
               </div>
-              <div className="text-[10px] text-[#5F6368] mb-1.5 font-medium">
+              <div className="text-[10px] text-[#5A453A] mb-1.5 font-medium">
                 {isDemoMode ? 'DEMO — Simulated NWP Convective Event' : 'Open-Meteo NWP Forecast (15-min Interval)'}
               </div>
               {rainfallData ? (
@@ -1201,7 +1201,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   </div>
                 </div>
               )}
-              <div className="mt-2 pt-1.5 border-t border-gray-200 text-[10px] text-[#5F6368] leading-tight">
+              <div className="mt-2 pt-1.5 border-t border-[#DFCBB3] text-[10px] text-[#5A453A] leading-tight">
                 {isDemoMode
                   ? 'DEMO — SIMULATED RAINFALL. Deterministic convective event for system evaluation. Not real forecast.'
                   : 'Represents accumulated liquid precipitation (mm) over the preceding model forecast interval, NOT instantaneous precipitation rate (mm/h). Discrete city stations do not constitute a continuous observed rainfall field.'}
@@ -1211,10 +1211,10 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'air_quality' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-0.5">
+              <div className="font-bold text-[#2D221C] mb-0.5">
                 {isDemoMode ? 'DEMO — Simulated Air Quality' : 'Continuous Air Quality'}
               </div>
-              <div className="text-[10px] text-[#5F6368] mb-1 font-medium">
+              <div className="text-[10px] text-[#5A453A] mb-1 font-medium">
                 {aqMetric === 'us_aqi' && (isDemoMode ? 'DEMO — US EPA AQI (0–500)' : 'US EPA AQI (0–500)')}
                 {aqMetric === 'pm10' && (isDemoMode ? 'DEMO — PM10 Particulate (µg/m³)' : 'PM10 Particulate (µg/m³)')}
                 {aqMetric === 'pm2_5' && (isDemoMode ? 'DEMO — PM2.5 Particles (µg/m³)' : 'PM2.5 Particles (µg/m³)')}
@@ -1261,7 +1261,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   </>
                 )}
               </div>
-              <div className="mt-2 pt-1.5 border-t border-gray-200 text-[10px] text-[#5F6368] leading-tight">
+              <div className="mt-2 pt-1.5 border-t border-[#DFCBB3] text-[10px] text-[#5A453A] leading-tight">
                 {isDemoMode
                   ? 'DEMO — SIMULATED AIR QUALITY. Deterministic test scenario illustrating western Shamal dust transport. Not real CAMS observations.'
                   : 'Atmospheric particulate and air quality index dispersion model estimates (~0.25°–0.4° native resolution). Continuous IQAir-style surface is rendered via smooth spatial resampling.'}
@@ -1271,10 +1271,10 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'aerosol' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-0.5">
+              <div className="font-bold text-[#2D221C] mb-0.5">
                 {isDemoMode ? 'DEMO — Simulated Aerosol AOD' : 'Aerosol Optical Depth (AOD)'}
               </div>
-              <div className="text-[10px] text-[#5F6368] mb-1.5 font-medium">
+              <div className="text-[10px] text-[#5A453A] mb-1.5 font-medium">
                 {isDemoMode ? 'DEMO — Simulated CAMS Optical Extinction (550nm)' : 'Copernicus CAMS Model (550nm)'}
               </div>
               {aerosolData ? (
@@ -1301,7 +1301,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
                   </div>
                 </div>
               )}
-              <div className="mt-2 pt-1.5 border-t border-gray-200 text-[10px] text-[#5F6368] leading-tight">
+              <div className="mt-2 pt-1.5 border-t border-[#DFCBB3] text-[10px] text-[#5A453A] leading-tight">
                 {isDemoMode
                   ? 'DEMO — SIMULATED AOD. Synthetic atmospheric column optical depth at 550nm for layout testing. Not real CAMS observations.'
                   : 'Column-integrated measure of light extinction. Indicates atmospheric aerosol loading aloft; not direct ground-level PM10 or surface dust concentration.'}
@@ -1311,21 +1311,21 @@ export const UaeMap: React.FC<UaeMapProps> = ({
 
           {activeOverlay === 'satellite_omps' && (
             <div>
-              <div className="font-bold text-[#1A1A1A] mb-0.5">
+              <div className="font-bold text-[#2D221C] mb-0.5">
                 {isDemoMode ? 'DEMO — Historic OMPS Swath' : 'NASA OMPS Aerosol Index'}
               </div>
-              <div className="text-[10px] text-[#5F6368] mb-1.5 font-medium">
+              <div className="text-[10px] text-[#5A453A] mb-1.5 font-medium">
                 {isDemoMode ? 'Suomi-NPP Spaceborne Swath (2024-04-16 Historic Event)' : 'Suomi-NPP Spaceborne Satellite'}
               </div>
               <div className="space-y-1 text-[11px]">
                 {AEROSOL_INDEX_LEVELS.map((lvl) => (
                   <div key={lvl.range} className="flex items-center gap-1.5">
-                    <span className="w-3 h-2.5 rounded shrink-0 border border-gray-300" style={{ backgroundColor: lvl.color }} />
+                    <span className="w-3 h-2.5 rounded shrink-0 border border-[#DFCBB3]" style={{ backgroundColor: lvl.color }} />
                     <span className="truncate"><strong>{lvl.range}:</strong> {lvl.label}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-2 pt-1.5 border-t border-gray-200 text-[10px] text-[#5F6368] leading-tight">
+              <div className="mt-2 pt-1.5 border-t border-[#DFCBB3] text-[10px] text-[#5A453A] leading-tight">
                 {isDemoMode
                   ? 'DEMO — HISTORIC SATELLITE RETRIEVAL. Visualizing archived Suomi-NPP OMPS swath from 16 April 2024 for testing. Not real-time satellite telemetry.'
                   : 'UV Aerosol Index detects UV-absorbing particles (dust plumes & smoke aloft) across the atmospheric column. Does not quantify ground-level PM10 or surface dust.'}
@@ -1351,12 +1351,12 @@ export const UaeMap: React.FC<UaeMapProps> = ({
               {activeOverlay === 'aerosol' && 'Copernicus CAMS Column Aerosol Optical Depth (AOD @ 550nm)'}
               {activeOverlay === 'satellite_omps' && 'NASA Suomi-NPP OMPS UV Aerosol Index (Satellite Observation)'}
             </span>
-            <span className="text-[10px] text-gray-500">
+            <span className="text-[10px] text-[#6B564B]">
               {activeOverlay === 'dust_risk' ? '[Proprietary Multi-Factor Risk Model (10 UAE Municipalities, IDW Resampled)]' : activeOverlay === 'rainfall' ? '[Atmospheric NWP Precipitation Forecast (~0.4° Resampled)]' : activeOverlay === 'aerosol' ? '[Atmospheric Composition NWP Forecast (~0.4° Resampled)]' : activeOverlay === 'satellite_omps' ? '[Spaceborne Satellite Observation (Daily Level 3)]' : activeOverlay === 'none' ? '' : '[Atmospheric NWP / CAMS Model Forecast (Resampled)]'}
             </span>
           </div>
 
-          <div className="text-[10px] text-[#717680]">
+          <div className="text-[10px] text-[#6B564B]">
             {activeOverlay === 'dust_risk' && `Updated: ${Object.values(outlooks)[0]?.fetchTime || 'Live Evaluated'}`}
             {activeOverlay === 'temperature' && tempData && `Model Run: ${tempData.timestamp}`}
             {activeOverlay === 'rainfall' && rainfallData && `Model Run: ${rainfallData.timestamp}`}
@@ -1367,7 +1367,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
         </div>
 
         {/* Clear source attribution, methodology and non-conflation disclaimer */}
-        <p className="text-[11px] leading-relaxed text-[#5F6368] pt-1 border-t border-gray-100">
+        <p className="text-[11px] leading-relaxed text-[#5A453A] pt-1 border-t border-[#DFCBB3]">
           {activeOverlay === 'dust_risk' && (
             <span className="text-amber-950 bg-amber-50/70 p-2 rounded border border-amber-200 block text-[11px] leading-relaxed">
               <strong>Continuous Atmospheric Dust-Risk Surface:</strong> Spatial visualization synthesized from DustWatch's multi-factor particulate and meteorological risk model across the 10 official UAE municipality coordinates. Continuous gradient surface is generated via Inverse Distance Weighting (IDW, power=2) spatial resampling without rectangular cell seams, employing yellow (low), orange (intermediate), and red (higher) color progression.
@@ -1387,9 +1387,9 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             </span>
           )}
           {activeOverlay === 'rainfall' && (
-            <span className="text-sky-950 bg-sky-50/80 p-2 rounded border border-sky-200 block text-[11px] leading-relaxed">
+            <span className="text-[#1B3A2D] bg-[#E8F0E7] p-2 rounded border border-[#C5D9C5] block text-[11px] leading-relaxed">
               <strong>NWP Accumulated Precipitation Forecast:</strong> Gridded forecast derived from Open-Meteo Numerical Weather Prediction blend (ECMWF IFS / ICON, ~0.4° native resolution, ~40 km grid). Continuous surface is rendered via Inverse Distance Weighting (IDW) spatial resampling across UAE territory.
-              <span className="block mt-1 font-medium text-sky-900">
+              <span className="block mt-1 font-medium text-[#1B3A2D]">
                 Scientific Semantics & Limitations: This layer measures accumulated liquid water precipitation equivalent in millimetres (mm) over the preceding model forecast interval (~15 minutes). It is strictly accumulated precipitation, NOT instantaneous precipitation rate (mm/h). Missing or null forecast values are handled explicitly as unavailable and are never converted into zero rainfall. Point-based city station readings do not constitute a continuous observed rainfall field.
               </span>
             </span>
@@ -1408,9 +1408,9 @@ export const UaeMap: React.FC<UaeMapProps> = ({
             </span>
           )}
           {activeOverlay === 'satellite_omps' && (
-            <span className="text-blue-950 bg-blue-50/80 p-2 rounded border border-blue-200 block text-[11px] leading-relaxed">
+            <span className="text-[#244C3B] bg-[#E8F0E7] p-2 rounded border border-[#C5D9C5] block text-[11px] leading-relaxed">
               <strong>Spaceborne Satellite Aerosol Index (NASA OMPS):</strong> Acquired daily by the Ozone Mapping and Profiler Suite (OMPS) aboard the Suomi-NPP satellite. Uses 340/378nm UV spectral contrast to observe absorbing aerosol plumes (mineral dust storms and elevated smoke).
-              <span className="block mt-1 font-medium text-blue-900">
+              <span className="block mt-1 font-medium text-[#244C3B]">
                 Scientific Limitations & Non-Conflation: Aerosol Index is a qualitative spaceborne column indicator of UV-absorbing particles aloft. It does not identify chemical composition, nor does it quantify ground-level PM10 / PM2.5 concentrations or surface health hazard.
               </span>
             </span>
@@ -1418,7 +1418,7 @@ export const UaeMap: React.FC<UaeMapProps> = ({
         </p>
 
         {/* Navigation & Resolution Transparency Note */}
-        <div className="text-[10px] text-[#717680] pt-1 border-t border-gray-100 flex items-center justify-between">
+        <div className="text-[10px] text-[#6B564B] pt-1 border-t border-[#DFCBB3] flex items-center justify-between">
           <span>
             <strong>Map Navigation & Boundaries:</strong> Map view is strictly focused on and bounded to the UAE territory and its 10 monitoring locations (zoom levels 6–16). Unconstrained panning into neighboring countries or distant waters is prevented. Zooming in does not synthesize additional atmospheric sensor resolution beyond the native NWP or satellite grid.
           </span>

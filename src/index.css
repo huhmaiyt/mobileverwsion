@@ -71,6 +71,11 @@ body {
   .dw-panel { background-color: #FFFDF8; }
 }
 
+/* Terracotta focus ring is invisible on the Deep Forest sidebar; use warm white there */
+.dw-sidebar :focus-visible {
+  outline-color: #FFFDF8 !important;
+}
+
 /* Hide scrollbar for clean horizontal mobile swipe strips */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -130,25 +135,53 @@ button, select, a, [role="button"] {
   z-index: 1500 !important;
 }
 
+/* Leaflet zoom / layer controls in the orange + green system */
+.leaflet-bar {
+  border: 1px solid #DFCBB3 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 4px 14px -6px rgba(36, 76, 59, 0.28) !important;
+  overflow: hidden;
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background-color: #FFFDF8;
+  color: #244C3B;
+  border-bottom: 1px solid #DFCBB3;
+}
+.leaflet-bar a:hover {
+  background-color: #FBEBDD;
+  color: #713F2B;
+}
+.leaflet-bar a:last-child {
+  border-bottom: none;
+}
+.leaflet-control-attribution {
+  background: rgba(255, 253, 248, 0.85) !important;
+  color: #5A453A !important;
+}
+.leaflet-control-attribution a {
+  color: #713F2B !important;
+}
+
 /* Refined Leaflet popups and tooltips matching DustWatch design */
 .leaflet-popup-content-wrapper {
-  background: #FFFFFF !important;
-  border: 1px solid #CBD5CD !important;
-  border-radius: 0.75rem !important;
+  background: #FFFDF8 !important;
+  border: 1px solid #DFCBB3 !important;
+  border-radius: 1rem !important;
   box-shadow: 0 4px 16px -2px rgba(36, 76, 59, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.05) !important;
   padding: 0 !important;
   overflow: hidden;
 }
 
 .leaflet-popup-tip {
-  background: #FFFFFF !important;
-  border: 1px solid #CBD5CD !important;
+  background: #FFFDF8 !important;
+  border: 1px solid #DFCBB3 !important;
 }
 
 .leaflet-popup-content {
   margin: 0.65rem 0.9rem !important;
   font-family: inherit !important;
-  color: #1E2522 !important;
+  color: #2D221C !important;
   line-height: 1.4 !important;
 }
 
