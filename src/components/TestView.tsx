@@ -12,7 +12,6 @@ import {
   FileCode,
   FileDown,
   FileUp,
-  Layers,
   Play,
   RotateCcw,
   ShieldAlert,
@@ -42,7 +41,6 @@ import {
   validateModelConfig,
 } from '../riskEngine.ts';
 import { SchoolPolicyConfig, WorkbenchEvaluationOutput } from '../types.ts';
-import { EvaluationWorkbench } from './EvaluationWorkbench.tsx';
 
 interface TestViewProps {
   outlooks: Record<string, CityOutlook>;
@@ -79,7 +77,6 @@ export const TestView: React.FC<TestViewProps> = ({
   const currentRaw = rawCityData[selectedCityId] || rawCityData[APP_CONFIG.defaultSelectedCityId];
 
   // Tab between Workbench and Diagnostics
-  const [activeMainTab, setActiveMainTab] = useState<'workbench' | 'diagnostics'>('workbench');
 
   const [simApiFail, setSimApiFail] = useState<boolean>(simulationState.simulateApiFailure);
   const [simMissingDust, setSimMissingDust] = useState<boolean>(simulationState.simulateMissingDust);
@@ -397,46 +394,7 @@ export const TestView: React.FC<TestViewProps> = ({
         </div>
       </div>
 
-      {/* Main Tabs: Workbench (Team Only) vs Diagnostics */}
-      <div className="flex border-b border-[#DFCBB3] gap-2">
-        <button
-          type="button"
-          onClick={() => setActiveMainTab('workbench')}
-          className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
-            activeMainTab === 'workbench'
-              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
-              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
-          }`}
-        >
-          <Layers className="w-4 h-4" />
-          <span>Evaluation Workbench (Team Only)</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setActiveMainTab('diagnostics')}
-          className={`px-4 py-2.5 text-xs sm:text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${
-            activeMainTab === 'diagnostics'
-              ? 'border-[#244C3B] text-[#244C3B] bg-[#E8F0E7]'
-              : 'border-transparent text-[#5A453A] hover:text-[#2D221C] hover:bg-[#F7F1E8]'
-          }`}
-        >
-          <Sliders className="w-4 h-4" />
-          <span>Diagnostics & Model Simulation</span>
-        </button>
-      </div>
-
-      {activeMainTab === 'workbench' && (
-        <EvaluationWorkbench
-          rawCityData={rawCityData}
-          selectedCityId={selectedCityId}
-          activeModel={activeModel}
-          schoolPolicy={schoolPolicy}
-          onSendToAccuracyChecker={onSendToAccuracyChecker}
-        />
-      )}
-
-      {activeMainTab === 'diagnostics' && (
+      {(
         <div className="space-y-8">
           {/* 1. Simulation Controls */}
           <section className="dw-panel p-5 space-y-4">

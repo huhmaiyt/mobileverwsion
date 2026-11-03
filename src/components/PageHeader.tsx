@@ -17,7 +17,7 @@ const TITLES: Partial<Record<ScreenId, { title: string; subtitle: string }>> = {
   'school-mode': { title: 'School Mode', subtitle: 'Outdoor activity guidance for schools, based on your approved policy' },
   'how-it-works': { title: 'How it works', subtitle: 'Where the data comes from and how each rating is calculated' },
   accuracy: { title: 'Accuracy', subtitle: 'How the forecasts compare with what was observed' },
-  'test-view': { title: 'Test view', subtitle: 'Model evaluation workbench' },
+  'test-view': { title: 'Test view', subtitle: 'Diagnostics and model simulation' },
 };
 
 /** Desktop page header (large screens only), shown above every dashboard screen. */
