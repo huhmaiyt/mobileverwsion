@@ -3,25 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-import {
-  AlertTriangle,
-  BookOpen,
-  CheckCircle,
-  Copy,
-  Download,
-  FileSpreadsheet,
-  Info,
-  ShieldAlert,
-  Upload,
-} from 'lucide-react';
+import React from 'react';
+import { BookOpen, Info, ShieldAlert } from 'lucide-react';
 import { APP_CONFIG } from '../config.ts';
 import { STRINGS } from '../strings.ts';
-import {
-  CsvEvaluationResult,
-  getCsvTemplate,
-  parseAndEvaluateCsv,
-} from '../evaluation.ts';
 import { EvaluationPredictorStats } from '../types.ts';
 import {
   OutlineDrawCard,
@@ -31,59 +16,6 @@ import {
 } from './OutlineDrawCard.tsx';
 
 export const AccuracyScreen: React.FC = () => {
-  const [csvEvaluation, setCsvEvaluation] = useState<CsvEvaluationResult | null>(null);
-  const [csvError, setCsvError] = useState<string | null>(null);
-  const [copiedJson, setCopiedJson] = useState<boolean>(false);
-
-  // File upload handler
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setCsvError(null);
-    setCopiedJson(false);
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const text = event.target?.result as string;
-      const res = parseAndEvaluateCsv(text);
-      if (res.success && res.result) {
-        setCsvEvaluation(res.result);
-      } else {
-        setCsvError(res.error || 'Failed to parse CSV');
-        setCsvEvaluation(null);
-      }
-    };
-    reader.onerror = () => {
-      setCsvError('Failed to read the selected file');
-      setCsvEvaluation(null);
-    };
-    reader.readAsText(file);
-  };
-
-  // Download template
-  const handleDownloadTemplate = () => {
-    const templateContent = getCsvTemplate();
-    const blob = new Blob([templateContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'dustwatch_evaluation_template.csv');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-
-  // Copy JSON
-  const handleCopyJson = () => {
-    if (!csvEvaluation?.jsonOutput) return;
-    navigator.clipboard.writeText(csvEvaluation.jsonOutput).then(() => {
-      setCopiedJson(true);
-      setTimeout(() => setCopiedJson(false), 3000);
-    });
-  };
-
   const renderStatsRow = (name: string, stats: EvaluationPredictorStats) => {
     const formatPct = (val: number | null) =>
       val !== null ? `${(val * 100).toFixed(1)}%` : 'n/a';
@@ -191,7 +123,7 @@ export const AccuracyScreen: React.FC = () => {
               <h3 className="font-bold text-[#2D221C]">2. Persistence Benchmark ("the next 12 hours look like now")</h3>
               <p className="text-[#5A453A] leading-relaxed">
                 Any valid predictive system must outperform persistence. In weather forecasting, the persistence benchmark assumes the next 12 hours look like now.
-                In our CSV evaluation tool, the persistence benchmark ("the next 12 hours look like now") is tracked alongside the baseline rule score to ensure true skill score gain.
+                In our evaluations, the persistence benchmark ("the next 12 hours look like now") is tracked alongside the baseline rule score to ensure true skill score gain.
               </p>
             </div>
           </div>
@@ -294,193 +226,12 @@ export const AccuracyScreen: React.FC = () => {
                 </tbody>
               </table>
             </div>
+            <p className="text-xs text-[#5A453A]">{STRINGS.accuracy.accuracyCaveat}</p>
           </div>
         )}
       </section>
 
-      {/* 4. Team CSV Evaluation Tool */}
-      <section className="dw-panel p-5 space-y-4">
-        <div>
-          <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
-            <FileSpreadsheet className="w-4 h-4 text-[#244C3B]" />
-            <span>{STRINGS.accuracy.csvToolTitle}</span>
-          </h2>
-          <p className="text-xs text-[#5A453A] mt-1">
-            {STRINGS.accuracy.csvToolDesc}
-          </p>
-        </div>
-
-        {/* Action Bar: Upload, Download Template */}
-        <div className="flex flex-wrap items-center gap-3">
-          <label className="inline-flex items-center gap-2 px-4 py-2 bg-[#244C3B] text-white rounded-md text-xs sm:text-sm font-semibold hover:bg-[#244C3B] cursor-pointer min-h-[44px]">
-            <Upload className="w-4 h-4" />
-            <span>{STRINGS.accuracy.csvUploadLabel}</span>
-            <input
-              type="file"
-              accept=".csv"
-              onChange={handleFileUpload}
-              className="hidden"
-            />
-          </label>
-
-          <button
-            type="button"
-            onClick={handleDownloadTemplate}
-            className="inline-flex items-center gap-2 px-3 py-2 bg-[#FFFDF8] border border-[#DFCBB3] text-[#2D221C] rounded-md text-xs sm:text-sm font-medium hover:bg-[#F7F1E8] min-h-[44px]"
-          >
-            <Download className="w-4 h-4 text-[#6B564B]" />
-            <span>{STRINGS.accuracy.csvDownloadTemplate}</span>
-          </button>
-        </div>
-
-        {/* Error message */}
-        {csvError && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-md text-xs text-red-900 flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
-            <div>
-              <strong>CSV Error: </strong>
-              <span>{csvError}</span>
-            </div>
-          </div>
-        )}
-
-        {/* Evaluation Results Output */}
-        {csvEvaluation && (
-          <div className="space-y-4 pt-3 border-t border-[#DFCBB3]">
-            {/* Summary counters */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
-                <span className="text-[#5A453A] block">Valid Data Rows</span>
-                <span className="font-bold text-base text-[#2D221C]">{csvEvaluation.validRowsCount}</span>
-              </div>
-              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
-                <span className="text-[#5A453A] block">Observed Events</span>
-                <span className="font-bold text-base text-[#2D221C]">{csvEvaluation.observedEventsCount}</span>
-              </div>
-              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
-                <span className="text-[#5A453A] block">Ignored Invalid Rows</span>
-                <span className="font-bold text-base text-amber-700">{csvEvaluation.ignoredRowsCount}</span>
-              </div>
-              <div className="p-2.5 rounded bg-[#F7F1E8] border border-[#DFCBB3]">
-                <span className="text-[#5A453A] block">Event Threshold</span>
-                <span className="font-bold text-base text-[#244C3B]">&ge; {APP_CONFIG.eventPredictionLevel}</span>
-              </div>
-            </div>
-
-            {/* Warning if too few events */}
-            {!csvEvaluation.hasEnoughEvents && (
-              <div className="p-3 bg-amber-50 border border-amber-300 rounded-md text-xs text-amber-900 flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
-                <span>{STRINGS.accuracy.tooFewEvents}</span>
-              </div>
-            )}
-
-            {/* Dataset provenance: shown when the uploaded CSV declares itself synthetic or carries a provenance label */}
-            {csvEvaluation.workbenchMetadata &&
-              (csvEvaluation.workbenchMetadata.isSynthetic || csvEvaluation.workbenchMetadata.hindcastLabel) && (
-                <div className="p-4 bg-[#E8F0E7] border border-[#C5D9C5] rounded-lg space-y-3">
-                  {csvEvaluation.workbenchMetadata.hindcastLabel && (
-                    <p className="text-xs text-[#1B3A2D] font-semibold">
-                      Dataset: {csvEvaluation.workbenchMetadata.hindcastLabel}
-                    </p>
-                  )}
-                  {csvEvaluation.workbenchMetadata.isSynthetic && (
-                    <div className="p-3 bg-amber-100 border border-amber-400 rounded text-xs text-amber-950 flex items-start gap-2 font-semibold">
-                      <AlertTriangle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                      <span>
-                        Notice: This dataset was generated from synthetic demonstration data. Real-world accuracy claims cannot be substantiated using synthetic data.
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
-
-            {/* Results Table */}
-            <div className="overflow-x-auto border border-[#DFCBB3] rounded-md">
-              <table className="w-full text-xs text-left">
-                <thead className="bg-[#F7F1E8] border-b border-[#DFCBB3] text-[#5A453A]">
-                  <tr>
-                    <th className="py-2.5 px-3">Predictor</th>
-                    <th className="py-2.5 px-3 text-center">Hits</th>
-                    <th className="py-2.5 px-3 text-center">Misses</th>
-                    <th className="py-2.5 px-3 text-center">False Alarms</th>
-                    <th className="py-2.5 px-3 text-center">Correct Neg.</th>
-                    <th className="py-2.5 px-3 text-center">Hit Rate</th>
-                    <th className="py-2.5 px-3 text-center">Miss Rate</th>
-                    <th className="py-2.5 px-3 text-center">FAR</th>
-                    <th className="py-2.5 px-3 text-center">Accuracy</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {renderStatsRow('Baseline Rule Score', csvEvaluation.predictors.baselineRuleScore)}
-                  {csvEvaluation.predictors.trainedModel &&
-                    renderStatsRow('Trained Model', csvEvaluation.predictors.trainedModel)}
-                  {csvEvaluation.predictors.persistenceBenchmark &&
-                    renderStatsRow('Persistence Benchmark ("the next 12 hours look like now")', csvEvaluation.predictors.persistenceBenchmark)}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="text-[11px] text-[#5A453A] italic">
-              {STRINGS.accuracy.accuracyCaveat}
-            </p>
-
-            {/* Example Misses and False Alarms */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-2">
-              <div className="border border-red-200 rounded-md p-3 bg-red-50/40">
-                <h4 className="font-bold text-red-900 mb-2">
-                  Example Misses (Observed = 1, Predicted &lt; High)
-                </h4>
-                {csvEvaluation.exampleMisses.length === 0 ? (
-                  <p className="text-[#5A453A]">No misses detected in evaluated dataset.</p>
-                ) : (
-                  <ul className="space-y-1 font-mono text-[11px]">
-                    {csvEvaluation.exampleMisses.map((ex, i) => (
-                      <li key={i} className="text-[#2D221C] bg-white/70 p-1 rounded border border-red-100">
-                        Row {ex.rowNumber}: {ex.city} ({ex.timestamp}) - Predicted: {ex.predictedLevel}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-
-              <div className="border border-amber-200 rounded-md p-3 bg-amber-50/40">
-                <h4 className="font-bold text-amber-900 mb-2">
-                  Example False Alarms (Observed = 0, Predicted &ge; High)
-                </h4>
-                {csvEvaluation.exampleFalseAlarms.length === 0 ? (
-                  <p className="text-[#5A453A]">No false alarms detected in evaluated dataset.</p>
-                ) : (
-                  <ul className="space-y-1 font-mono text-[11px]">
-                    {csvEvaluation.exampleFalseAlarms.map((ex, i) => (
-                      <li key={i} className="text-[#2D221C] bg-white/70 p-1 rounded border border-amber-100">
-                        Row {ex.rowNumber}: {ex.city} ({ex.timestamp}) - Predicted: {ex.predictedLevel}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
-
-            {/* Copy Results as JSON */}
-            <div className="pt-2 flex items-center justify-between flex-wrap gap-2">
-              <p className="text-xs text-[#5A453A]">
-                Paste these verified results into <code className="bg-[#F3EADD] px-1 py-0.5 rounded">config.evaluationResults</code> once team review is complete.
-              </p>
-              <button
-                type="button"
-                onClick={handleCopyJson}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-800 text-white rounded text-xs font-semibold hover:bg-black"
-              >
-                {copiedJson ? <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedJson ? STRINGS.accuracy.csvCopiedJson : STRINGS.accuracy.csvCopyJson}</span>
-              </button>
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* 5. Known Limitations List */}
+      {/* 4. Known Limitations List */}
       <section className="dw-panel p-5 space-y-3">
         <h2 className="text-base font-bold text-[#2D221C] flex items-center gap-2">
           <Info className="w-4 h-4 text-[#2D221C]" />

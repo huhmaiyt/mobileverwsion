@@ -217,13 +217,6 @@ export const STRINGS = {
     officialTitle: 'Official Benchmark Results',
     notYetEvaluatedTitle: 'Not yet evaluated',
     notYetEvaluatedDesc: 'DustWatch has not completed its formal multi-station historical validation against UAE meteorological station logs. To maintain scientific integrity, no simulated or fictional validation scores are presented here. Until full evaluation logs are completed, confidence is capped at Medium.',
-    csvToolTitle: 'Team Tool: Check results from a CSV file',
-    csvToolDesc: 'Evaluate model, baseline, or persistence performance against historical event logs. All processing runs entirely inside your browser; no files or data are uploaded.',
-    csvUploadLabel: 'Select CSV File to Evaluate',
-    csvDownloadTemplate: 'Download CSV template',
-    csvCopyJson: 'Copy results as JSON',
-    csvCopiedJson: 'Copied to clipboard!',
-    tooFewEvents: 'Too few events for reliable conclusions (< 10 observed events).',
     accuracyCaveat: 'Note: Overall accuracy can be misleadingly high in rare-event datasets when clean days outnumber dust days.',
     limitationsTitle: 'Known Limitations',
     limitations: [
